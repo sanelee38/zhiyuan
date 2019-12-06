@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>学校主页</title>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8;width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div>
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="glyphicon glyphicon-align-justify navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-right: 14px;margin-top: 8px">
+                        <span class="sr-only">孙教授讲专业</span>
+                    </button>
+                    <a class="navbar-brand" href="/">孙教授讲专业</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">视频课堂</a></li>
+                        <li><a href="#">资讯</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li th:if="${session.loginUser != null}" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                <span  th:text="${session.loginUser.username}"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout">退出登录</a></li>
+                            </ul>
+                        </li>
+                        <li th:if="${session.loginUser == null}">
+                            <button  onclick="window.location.href = '/login'" type="button" class="btn btn-default navbar-btn" style="margin-right: 20px">
+                                登录
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" margin-top: 70px">
+        <div class="panel panel-default">
+            <div class="panel-body" style="text-align: center">
+                <h2 th:text="${schools.name}"></h2>
+                <h4 th:text="${schools.acronym}"></h4>
+                <h5 th:text="'成立年份：'+${schools.foundingyear}+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'所在地区：'+${schools.areaname}+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'类型：'+${schools.type}+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'隶属：'+${schools.department}"></h5>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row container-fluid">
+            <div class="container-fluid col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center">
+                        <h3 class="panel-title">录取分数线</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center">
+
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center">
+                        <h3 class="panel-title">院校相关</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center">
+                        <a th:href="${schools.schoolweb}"><h4 >院校官网</h4></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
