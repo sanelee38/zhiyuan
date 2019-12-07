@@ -1,5 +1,6 @@
 package com.sanelee.zhiyuan.DTO;
 
+import com.sanelee.zhiyuan.Model.Profession;
 import com.sanelee.zhiyuan.Model.School;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Data
 public class PaginationDTO {
+    private List<Profession> professions;
     private List<School> schools;
     private boolean showPrevious;
     private boolean showFirstPage;

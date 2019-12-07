@@ -25,7 +25,7 @@ public class SchoolService {
     @Autowired
     private SchoolMapper schoolMapper;
 
-    public PaginationDTO list(Integer page, Integer size,Integer areaid,String search,String type){
+    public PaginationDTO list(Integer page, Integer size,Integer areaid,String search,String type,Integer is211,Integer is985,Integer isdoublefirstclass){
         if (StringUtils.isNotBlank(search)) {
             String[] tags = StringUtils.split(search, " ");
             search = Arrays.stream(tags).collect(Collectors.joining("|"));
@@ -36,6 +36,9 @@ public class SchoolService {
         schoolQueryDTO.setSearch(search);
         schoolQueryDTO.setAreaid(areaid);
         schoolQueryDTO.setType(type);
+        schoolQueryDTO.setIs211(is211);
+        schoolQueryDTO.setIs985(is985);
+        schoolQueryDTO.setIsdoublefirstclass(isdoublefirstclass);
 
         Integer totalCount= schoolExtMapper.countBySomething(schoolQueryDTO);
 

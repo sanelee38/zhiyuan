@@ -32,8 +32,11 @@ public class SchoolController {
                          @RequestParam(name = "size",defaultValue = "7") Integer size,
                          @RequestParam(name = "areaid",required = false) Integer areaid,
                          @RequestParam(name = "search",required = false) String search,
-                         @RequestParam(name = "type",required = false) String type){
-        PaginationDTO pagination = schoolService.list(page,size,areaid,search,type);
+                         @RequestParam(name = "type",required = false) String type,
+                         @RequestParam(name = "is985",required = false) Integer is985,
+                         @RequestParam(name = "is211",required = false) Integer is211,
+                         @RequestParam(name = "isdoublefirstclass",required = false) Integer isdoublefirstclass){
+        PaginationDTO pagination = schoolService.list(page,size,areaid,search,type,is211,is985,isdoublefirstclass);
 
         SchoolExample example1 = new SchoolExample();
         SchoolExample example2 = new SchoolExample();
@@ -48,6 +51,9 @@ public class SchoolController {
         model.addAttribute("search",search);
         model.addAttribute("areaid",areaid);
         model.addAttribute("type",type);
+        model.addAttribute("is211",is211);
+        model.addAttribute("is985",is985);
+        model.addAttribute("isdoublefirstclass",isdoublefirstclass);
 
         return "school";
     }

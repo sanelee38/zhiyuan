@@ -32,6 +32,7 @@
 
         <table schema="zhiyuan" tableName="user" domainObjectName="User" ></table>
         <table schema="zhiyuan" tableName="school" domainObjectName="School" ></table>
+        <table schema="zhiyuan" tableName="profession" domainObjectName="Profession" ></table>
 
     </context>
 </generatorConfiguration>

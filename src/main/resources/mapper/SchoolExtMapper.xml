@@ -73,6 +73,15 @@
       <if test="type != null and type !=''">
         or type=#{type}
       </if>
+      <if test="is211 != null and is211 !=''">
+        or is211=#{is211}
+      </if>
+      <if test="is985 != null and is985 !=''">
+        or is985=#{is985}
+      </if>
+      <if test="isdoublefirstclass != null and isdoublefirstclass !=''">
+        or isdoublefirstclass=#{isdoublefirstclass}
+      </if>
     </where>
   </select>
   <select id="selectBySomething" parameterType="com.sanelee.zhiyuan.DTO.SchoolQueryDTO" resultMap="BaseResultMap">
@@ -86,6 +95,15 @@
       </if>
       <if test="type != null and type !=''">
         or type=#{type}
+      </if>
+      <if test="is211 != null and is211 !=''">
+        or is211=#{is211}
+      </if>
+      <if test="is985 != null and is985 !=''">
+        or is985=#{is985}
+      </if>
+      <if test="isdoublefirstclass != null and isdoublefirstclass !=''">
+        or isdoublefirstclass=#{isdoublefirstclass}
       </if>
     </where>
     order by rank limit #{page},#{size}

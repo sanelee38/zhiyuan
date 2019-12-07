@@ -1,13 +1,16 @@
-create table `profession` (
-                              `description` text ,
-                              `subject` varchar (450),
-                              `major` varchar (150),
-                              `pid` int (11),
-                              `proname` varchar (900),
-                              `timelength` varchar (30),
-                              `class` text ,
-                              `job` text ,
-                              `graduate` text ,
-                              `code` varchar (150),
-                              `sort` varchar (30)
+create table profession
+(
+    description longtext     null,
+    subject     varchar(150) null,
+    major       varchar(50)  null,
+    pid         int          not null
+        primary key,
+    proname     varchar(300) null,
+    timelength  varchar(10)  null,
+    classes     varchar(500) null,
+    job         varchar(500) null,
+    graduate    varchar(500) null,
+    code        varchar(50)  null,
+    sort        varchar(10)  null
 );
+

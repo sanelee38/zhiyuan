@@ -9,4 +9,7 @@ public class SchoolQueryDTO {
     private Integer size;
     private Integer areaid;
     private String type;
+    private Integer is985;
+    private Integer is211;
+    private Integer isdoublefirstclass;
 }
