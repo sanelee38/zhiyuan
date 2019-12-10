@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,5 +59,22 @@ public class ProfessionService {
 
         return paginationDTO;
 
+    }
+
+    public List<Profession> subjectList(String major) {
+        List<Profession> subjectList = new ArrayList<>();
+        if (major != null){
+            major = StringUtils.substringBefore(major, ",");
+            Profession example3 = new Profession();
+            example3.setMajor(major);
+            subjectList=professionExtMapper.selectSubjectByMajor(example3);
+        }
+        else {
+            ProfessionExample example2 = new ProfessionExample();
+            example2.setDistinct(true);
+            example2.setOrderByClause("pid asc");
+            subjectList = professionExtMapper.selectSubjectByExample(example2);
+        }
+        return subjectList;
     }
 }

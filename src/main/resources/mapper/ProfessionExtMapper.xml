@@ -18,10 +18,8 @@
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="sort" jdbcType="VARCHAR" property="sort" />
   </resultMap>
+
   <sql id="Base_Column_List1">
-    subject
-  </sql>
-  <sql id="Base_Column_List2">
     major
   </sql>
   <select id="countBySomething" parameterType="com.sanelee.zhiyuan.DTO.ProfessionQueryDTO" resultType="java.lang.Integer">
@@ -65,17 +63,33 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectSubjectByMajor" parameterType="com.sanelee.zhiyuan.Model.Profession" resultMap="BaseResultMap">
+
+    select distinct subject,major from profession
+    <where>
+      <if test="major != null and major != '' ">
+        and major=#{major}
+      </if>
+    </where>
+    order by pid
+
+  </select>
   <select id="selectMajorByExample" parameterType="com.sanelee.zhiyuan.Model.ProfessionExample" resultMap="BaseResultMap">
 
     select
     <if test="distinct">
       distinct
     </if>
-    <include refid="Base_Column_List2" />
+    <include refid="Base_Column_List1" />
     from profession
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+  </select>
+  <select id="selectByProname" parameterType="com.sanelee.zhiyuan.Model.Profession" resultMap="BaseResultMap">
+
+    select * from profession where proname=#{proname}
+
   </select>
 
 </mapper>

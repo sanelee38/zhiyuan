@@ -60,7 +60,7 @@
                 <div class="container-fluid">
                     <ul class="list-group" id="dataSet" th:each="profession:${pagination.professions}">
                         <li class="media" style="height: 40px">
-                            <a th:href="@{'/professionHomepage/'+${profession.pid}}" style="text-decoration: none;">
+                            <a th:href="@{'/professionHomepage/'+${profession.proname}}" style="text-decoration: none;">
                                 <div class="media-body" >
                                     <h4 class="media-heading" style="color: #333333" th:text="${profession.proname}"></h4>
                                 </div>
@@ -113,25 +113,31 @@
                                     <button class="cardbutton" name="major"  value="" type="submit" style="background-color: #498364">不限</button>
                                 </li>
                                 <li  role="presentation" th:each="majors:${majorList}" >
-                                    <button  name="major" type="submit" th:text="${majors.major}" th:value="${majors.major}" th:class="${majors.major == major}?'cardbutton2':'cardbutton'"></button>
+                                    <button  name="major" type="submit" th:text="${majors.major}" th:value="${majors.major}" th:class="${majors.major == major || majors.major== majorinfo.major}?'cardbutton2':'cardbutton'"></button>
                                 </li>
                             </ul>
                         </form>
                     </div>
                 </div>
 
-                <div class="cadrborder">
+                <div class="cadrborder" th:if="${major != null && major != ''}">
                     <div style="margin: 5px">
-                        <form action="/profession" method="get" id="typeform">
+                        <form action="/profession" method="get" >
                             <ul class="nav nav-pills" style="padding-left: 3px;">
                                 <li  role="presentation">
-                                    <button class="cardbutton" name="subject"  value="" type="submit" style="background-color: #498364">不限</button>
-                                </li>
-                                <li role="presentation" th:each="subjects:${subjectList}">
-                                    <button name="subject" type="submit" th:text="${subjects.subject}" th:value="${subjects.subject}" th:class="${subjects.subject == subject}?'cardbutton2':'cardbutton'"></button>
+                                    <button class="cardbutton" name="major"  th:value="${majorinfo.major}" type="submit" style="background-color: #498364">不限</button>
                                 </li>
                             </ul>
                         </form>
+                        <form action="/profession" method="get" id="typeform">
+                            <ul class="nav nav-pills" style="padding-left: 3px;">
+                                <li role="presentation" th:each="subjects:${subjectList}">
+                                    <input class="hidden" name="major" th:value="${subjects.major.substring(0)}"/>
+                                    <button name="subject"  type="submit" th:onclick="" th:text="${subjects.subject}" th:value="${subjects.subject}" th:class="${subjects.subject == subject}?'cardbutton2':'cardbutton'"></button>
+                                </li>
+                            </ul>
+                        </form>
+
                     </div>
                 </div>
 

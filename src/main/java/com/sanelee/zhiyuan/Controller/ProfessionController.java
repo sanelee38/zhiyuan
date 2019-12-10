@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ProfessionController {
@@ -26,24 +27,25 @@ public class ProfessionController {
                              @RequestParam(name = "size",defaultValue = "11") Integer size,
                              @RequestParam(name = "major",required = false) String major,
                              @RequestParam(name = "search",required = false) String search,
-                             @RequestParam(name = "subject",required = false) String subject){
+                             @RequestParam(name = "subject",required = false) String subject,
+                             Map<String,Object> map){
         PaginationDTO pagination = professionService.list(page,size,major,search,subject);
 
         ProfessionExample example1 = new ProfessionExample();
-        ProfessionExample example2 = new ProfessionExample();
         example1.setDistinct(true);
         example1.setOrderByClause("pid asc");
-        example2.setDistinct(true);
-        example2.setOrderByClause("pid asc");
         List<Profession> majorList = professionExtMapper.selectMajorByExample(example1);
-        List<Profession> subjectList = professionExtMapper.selectSubjectByExample(example2);
+        List<Profession> subjectListByMajor = professionService.subjectList(major);
+        map.put("majorinfo",subjectListByMajor.get(0));
+
 
         model.addAttribute("pagination",pagination);
         model.addAttribute("search",search);
         model.addAttribute("majorList",majorList);
-        model.addAttribute("subjectList",subjectList);
+        model.addAttribute("subjectList",subjectListByMajor);
         model.addAttribute("major",major);
         model.addAttribute("subject",subject);
+
         return "profession";
     }
 }

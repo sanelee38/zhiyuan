@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>专业主页</title>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8;width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div>
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="glyphicon glyphicon-align-justify navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-right: 14px;margin-top: 8px">
+                        <span class="sr-only">孙教授讲专业</span>
+                    </button>
+                    <a class="navbar-brand" href="/">孙教授讲专业</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">视频课堂</a></li>
+                        <li><a href="#">资讯</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li th:if="${session.loginUser != null}" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                <span  th:text="${session.loginUser.username}"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout">退出登录</a></li>
+                            </ul>
+                        </li>
+                        <li th:if="${session.loginUser == null}">
+                            <button  onclick="window.location.href = '/login'" type="button" class="btn btn-default navbar-btn" style="margin-right: 20px">
+                                登录
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" margin-top: 70px">
+        <div class="panel panel-default">
+            <div class="panel-body" style="text-align: center">
+                <h2 th:text="${profession.proname}"></h2>
+                <h4 th:text="${profession.major}+'&nbsp;'+'&gt;'+'&nbsp;'+${profession.subject}"></h4>
+                <h5 th:text="'国标代码'+'&nbsp;'+'&nbsp;'+${profession.code}+'&nbsp;'+'(不可用于填报)'"></h5>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row container-fluid">
+            <div class="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center">
+                        <h3 class="panel-title">专业介绍</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center">
+                        <h2>专业简介</h2>
+                        <h3 th:text="${profession.description}"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center">
+                        <h3 class="panel-title">开设院校</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center">
+                        <div class="container-fluid">
+                            <ul class="list-group" id="dataSet" th:each="school:${professionSchool.gaoKaos}">
+                                <li class="media" style="height: 80px">
+                                    <a th:href="@{'/schoolHomepage/'+${school.scid}}" style="text-decoration: none;">
+                                        <div class="media-body" >
+                                            <h4 class="media-heading" style="color: #333333" th:text="${school.name}"></h4>
+                                        </div>
+                                    </a>
+                                    <ol class="schooltitle">
+                                        <span class="label label-primary" th:if="${school.is985 == 985}">985</span>
+                                        <span class="label label-primary" th:if="${school.is211 == 211}">211</span>
+                                        <span class="label label-primary" th:if="${school.isdoublefirstclass == 1}">双一流</span>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <div style="text-align: center">
+                                <nav aria-label="Page navigation" style="color: #0f0f0f">
+                                    <ul class="pagination">
+
+                                        <li th:if="${professionSchool.showFirstPage}">
+                                            <a th:href="@{'/professionHomepage/'+${proname}(page=1)}" aria-label="Previous">
+                                                <span aria-hidden="true">&lt;&lt;</span>
+                                            </a>
+                                        </li>
+                                        <li th:if="${professionSchool.showPrevious}">
+                                            <a th:href="@{'/professionHomepage/'+${proname}(page=${professionSchool.page - 1})}" aria-label="Previous">
+                                                <span aria-hidden="true">&lt;</span>
+                                            </a>
+                                        </li>
+
+                                        <li th:each="page:${professionSchool.pages}" th:class="${professionSchool.page == page}?'active':''">
+                                            <a th:href="@{'/professionHomepage/'+${proname}(page=${page})}" th:text="${page}" >
+
+                                            </a>
+                                        </li>
+                                        <li th:if="${professionSchool.showNext}">
+                                            <a th:href="@{'/professionHomepage/'+${proname}(page=${professionSchool.page + 1})}" aria-label="Next">
+                                                <span aria-hidden="true">&gt;</span>
+                                            </a>
+                                        </li>
+                                        <li th:if="${professionSchool.showEndPage}">
+                                            <a th:href="@{'/professionHomepage/'+${proname}(page=${professionSchool.totalPage})}" aria-label="Next">
+                                                <span aria-hidden="true">&gt;&gt;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

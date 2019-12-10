@@ -19,4 +19,8 @@ public interface ProfessionExtMapper {
     List<Profession> selectMajorByExample(ProfessionExample example1);
 
     List<Profession> selectSubjectByExample(ProfessionExample example2);
+
+    List<Profession> selectSubjectByMajor(Profession example3);
+
+    Profession selectByProname(String proname);
 }
