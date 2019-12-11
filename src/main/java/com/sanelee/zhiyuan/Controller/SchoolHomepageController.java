@@ -30,6 +30,8 @@ public class SchoolHomepageController {
         List<SchoolScore> schoolScore = schoolScoreExtMapper.selectByScidSort(scid,sort);
         model.addAttribute("schools",school);
         model.addAttribute("schoolscores",schoolScore);
+        model.addAttribute("sort",sort);
+
         return "schoolHomepage";
     }
 }
