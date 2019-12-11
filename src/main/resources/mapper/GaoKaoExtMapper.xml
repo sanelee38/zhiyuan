@@ -34,4 +34,7 @@
   <select id="countSelectSchoolByProname" parameterType="com.sanelee.zhiyuan.DTO.GaoKaoDTO" resultType="java.lang.Integer">
     select count(distinct name) from gaokao where spname regexp #{spname}
   </select>
+  <select id="searchByScore_Province_Object_Direction" parameterType="com.sanelee.zhiyuan.DTO.GaoKaoDTO" resultMap="BaseResultMap">
+    select * from gaokao where min between #{score}-5 and #{score}+5 and local_province_name=#{province} and local_type_name=#{object}
+  </select>
 </mapper>

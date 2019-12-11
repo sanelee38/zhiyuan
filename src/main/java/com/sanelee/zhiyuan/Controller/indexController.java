@@ -44,6 +44,8 @@ public class indexController {
     public String register(HttpServletRequest request, Map<String,Object> map){
         String username = request.getParameter("username");
         String userPhone = request.getParameter("userPhone");
+        String userArea = request.getParameter("userArea");
+        String userSort = request.getParameter("userSort");
         String password = request.getParameter("password");
         String password2 = request.getParameter("password2");
         UserExample userExample1 = new UserExample();
@@ -58,6 +60,8 @@ public class indexController {
             User user = new User();
             user.setUsername(username);
             user.setUserphone(userPhone);
+            user.setUserarea(userArea);
+            user.setUsersort(userSort);
             user.setPassword(password);
             userMapper.insertSelective(user);
             System.out.println(username);

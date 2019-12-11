@@ -1,11 +1,9 @@
-create table schoolscore
+create table question
 (
-    scid     int default 0 not null,
-    sort     int           not null,
-    name     varchar(50)   not null,
-    minScore int           not null,
-    minRank  int           not null,
-    batch    int           not null,
-    year     int(10)       not null
+    id     int      not null
+        primary key,
+    item   longtext null,
+    value1 int      not null,
+    value2 int      not null
 );
 

@@ -6,15 +6,11 @@
           content="text/html; charset=UTF-8;width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/css/college.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
-    <style>
-        body{ text-align:center}
-        #tableAround{margin:0 auto}
-    </style>
 </head>
-<body>
+<body style="text-align: center">
 <div>
     <div>
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -26,10 +22,6 @@
                     <a class="navbar-brand" href="/">孙教授讲专业</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<!--                    <ul class="nav navbar-nav">-->
-<!--                        <li><a href="#">视频课堂</a></li>-->
-<!--                        <li><a href="#">资讯</a></li>-->
-<!--                    </ul>-->
                     <ul class="nav navbar-nav navbar-right">
                         <li th:if="${session.loginUser != null}" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

@@ -4,6 +4,10 @@ import lombok.Data;
 
 @Data
 public class GaoKaoDTO {
+    private Integer score;
+    private String province;
+    private String object;
+    private String direction;
     private Integer is985;
     private Integer is211;
     private Integer isdoublefirstclass;

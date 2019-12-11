@@ -13,4 +13,6 @@ public interface GaoKaoExtMapper {
     Integer countSelectSchoolByProname(GaoKaoDTO gaoKaoDTO);
 
     List<GaoKao> selectByProname(GaoKaoDTO gaoKaoDTO);
+
+    List<GaoKao> searchByScore_Province_Object_Direction(GaoKaoDTO gaoKaoDTO);
 }
