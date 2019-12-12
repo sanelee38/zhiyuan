@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="/addlogin" name="loginfrom" role="form" method="post" class="form-signin" accept-charset="utf-8">
+    <form action="/front/addlogin" name="loginfrom" role="form" method="post" class="form-signin" accept-charset="utf-8">
         <h4 class="form-signin-heading">输入你的用户名和密码进行登录：</h4>
         <label class="sr-only" for="username">用户名</label>
         <input type="text" name="username" placeholder="用户名..."  class=" form-control" id="username" required autofocus>
@@ -22,9 +22,7 @@
         <div style="text-align:center;vertical-align:middle;width: 100%">
             <button type="submit" class="btn btn-lg btn-primary btn-block">登录</button>
             <h4 th:text="${msg}"></h4>
-            <!--            <a href="/front/register" class="zcxy" target="_blank">注册</a>-->
-            <!--            <button type="button" class="btn btn-lg btn-primary btn-block" onClick="location.href('/front/register');">注册</button>-->
-            <input type="button" value="注册" class="btn btn-lg btn-primary btn-block" onClick="location.href='/register'"/>
+            <input type="button" value="注册" class="btn btn-lg btn-primary btn-block" onClick="location.href='/front/register'"/>
         </div>
     </form>
 

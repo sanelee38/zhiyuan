@@ -12,20 +12,54 @@
 </head>
 <body>
 <div>
-    <table class="table">
-        <thead>
-        <tr>
-            <td class="active">学校</td>
-            <td class="active">专业</td>
-        </tr>
-        </thead>
-        <tbody th:each="gaokaos:${gaokao}">
-        <tr>
-            <td class="active" th:text="${gaokaos.name}"></td>
-            <td class="active" th:text="${gaokaos.spname}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="glyphicon glyphicon-align-justify navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-right: 14px;margin-top: 8px">
+                        <span class="sr-only">孙教授讲专业</span>
+                    </button>
+                    <a class="navbar-brand" href="/">孙教授讲专业</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li th:if="${session.loginUser != null}" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                <span  th:text="${session.loginUser.username}"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout">退出登录</a></li>
+                            </ul>
+                        </li>
+                        <li th:if="${session.loginUser == null}">
+                            <button  onclick="window.location.href = '/login'" type="button" class="btn btn-default navbar-btn" style="margin-right: 20px">
+                                登录
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="col-md-8 col-md-offset-2" style="margin-bottom: 50px;margin-top: 80px;">
+        <table class="table">
+            <thead>
+            <tr>
+                <td class="active">学校</td>
+                <td class="active">专业</td>
+            </tr>
+            </thead>
+            <tbody th:each="gaokaos:${gaokao}">
+            <tr>
+                <td class="active" th:text="${gaokaos.name}"></td>
+                <td class="active" th:text="${gaokaos.spname}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
 

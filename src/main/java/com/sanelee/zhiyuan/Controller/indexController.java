@@ -1,5 +1,6 @@
 package com.sanelee.zhiyuan.Controller;
 
+import com.sanelee.zhiyuan.Mapper.UserExtMapper;
 import com.sanelee.zhiyuan.Mapper.UserMapper;
 import com.sanelee.zhiyuan.Model.User;
 import com.sanelee.zhiyuan.Model.UserExample;
@@ -19,12 +20,27 @@ import java.util.Map;
 import java.util.UUID;
 
 @Controller
+@RequestMapping("/front/*")
 public class indexController {
+    @Autowired
+    private UserExtMapper userExtMapper;
+
     @Autowired
     private UserMapper userMapper;
     
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie:cookies){
+            if (cookie.getName().equals("token")){
+                String token = cookie.getValue();
+                User user = userExtMapper.findByToken(token);
+                if (user != null){
+                    request.getSession().setAttribute("user",user);
+                }
+                break;
+            }
+        }
         return "index";
     }
 
@@ -34,7 +50,8 @@ public class indexController {
         return "register";
     }
 
-    @RequestMapping("/login")
+    //登录页面
+    @GetMapping("/login")
     public String login(){
         return "login";
     }
@@ -86,7 +103,7 @@ public class indexController {
     }
 
     //登陆方法
-    @RequestMapping(value = "/addlogin",method = RequestMethod.POST)
+    @RequestMapping("/addlogin")
     public String addlogin(HttpServletRequest request,
                            HttpServletResponse response,
                            Map<String,Object> map,
