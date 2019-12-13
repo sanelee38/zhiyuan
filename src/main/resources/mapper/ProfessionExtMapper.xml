@@ -29,10 +29,10 @@
         or proname regexp #{search}
       </if>
       <if test="major != null and major !=''">
-        or major=#{major}
+        or major =#{major}
       </if>
       <if test="subject != null and subject !=''">
-        or subject=#{subject}
+        or profession.subject = #{subject}
       </if>
     </where>
   </select>
@@ -43,10 +43,10 @@
         or proname regexp #{search}
       </if>
       <if test="major != null and major !=''">
-        or major=#{major}
+        or major = #{major}
       </if>
       <if test="subject != null and subject !=''">
-        or subject=#{subject}
+        or profession.subject=#{subject}
       </if>
     </where>
     order by pid limit #{page},#{size}
@@ -68,7 +68,7 @@
     select distinct subject,major from profession
     <where>
       <if test="major != null and major != '' ">
-        and major=#{major}
+        or major=#{major}
       </if>
     </where>
     order by pid

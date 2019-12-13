@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.sanelee.zhiyuan.mapper")
+@MapperScan("com.sanelee.zhiyuan.Mapper")
 public class ZhiyuanApplication {
 
     public static void main(String[] args) {

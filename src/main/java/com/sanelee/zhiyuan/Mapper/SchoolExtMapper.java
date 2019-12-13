@@ -10,9 +10,6 @@ public interface SchoolExtMapper {
 
     List<School> selectAreaByExample(SchoolExample example);
     List<School> selectTypeByExample(SchoolExample example);
-
-
     Integer countBySomething(SchoolQueryDTO schoolQueryDTO);
-
     List<School> selectBySomething(SchoolQueryDTO schoolQueryDTO);
 }

@@ -64,17 +64,17 @@
   <select id="countBySomething" parameterType="com.sanelee.zhiyuan.DTO.SchoolQueryDTO" resultType="java.lang.Integer">
     select count(*) from school
     <where>
-      <if test="search != null and search !=''">
+      <if test="search != null and search != ''">
         or name regexp #{search}
       </if>
-      <if test="areaid != null and areaid !=''">
-        or areaid=#{areaid}
+      <if test="areaid != null and areaid != ''">
+        or areaid = #{areaid}
       </if>
-      <if test="type != null and type !=''">
-        or type=#{type}
+      <if test="type != null and type != ''">
+        or school.type = #{type}
       </if>
-      <if test="is211 != null and is211 !=''">
-        or is211=#{is211}
+      <if test="is211 != null and is211 != ''">
+        or is211 = #{is211}
       </if>
       <if test="is985 != null and is985 !=''">
         or is985=#{is985}
@@ -88,13 +88,13 @@
     select * from school
     <where>
       <if test="search != null and search !=''">
-        or name regexp #{search}
+        or school.name regexp #{search}
       </if>
       <if test="areaid != null and areaid !=''">
         or areaid=#{areaid}
       </if>
       <if test="type != null and type !=''">
-        or type=#{type}
+        or school.type=#{type}
       </if>
       <if test="is211 != null and is211 !=''">
         or is211=#{is211}
@@ -106,7 +106,7 @@
         or isdoublefirstclass=#{isdoublefirstclass}
       </if>
     </where>
-    order by rank limit #{page},#{size}
+    order by school.rank limit #{page},#{size}
   </select>
 
 </mapper>

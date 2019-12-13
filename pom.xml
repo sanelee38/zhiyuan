@@ -96,9 +96,9 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>5.2.4</version>
                 <configuration>
-                    <url>jdbc:mysql://localhost:3306/zhiyuan</url>
+                    <url>jdbc:mysql://mydbinstance1.ctgutwvlrngx.rds.cn-north-1.amazonaws.com.cn:3306/zhiyuan</url>
                     <user>root</user>
-                    <password>root</password>
+                    <password>bmw888bmw</password>
                 </configuration>
                 <dependencies>
                     <dependency>

@@ -8,6 +8,7 @@ public class SchoolQueryDTO {
     private Integer page;
     private Integer size;
     private Integer areaid;
+    private Integer rank;
     private String type;
     private Integer is985;
     private Integer is211;

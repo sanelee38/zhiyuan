@@ -56,6 +56,9 @@ public class SchoolService {
         if (page > totalPage) {
             page = totalPage;
         }
+        if (totalPage == 0){
+            page = 1;
+        }
         paginationDTO.setPagination(totalPage, page);
         Integer offset = size * (page -1);
         SchoolExample example = new SchoolExample();
