@@ -10,103 +10,100 @@
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
 </head>
 <body>
-<div th:fragment="nav">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="glyphicon glyphicon-align-justify navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-right: 14px;margin-top: 8px">
-                    <span class="sr-only">孙教授讲专业</span>
-                </button>
-                <a class="navbar-brand" href="/">孙教授讲专业</a>
+<div>
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header col-lg-9 col-xs-9 col-md-9">
+                    <!--                    <button type="button" class="glyphicon glyphicon-align-justify navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-right: 14px;margin-top: 8px">-->
+                    <!--                        <span class="sr-only">孙教授讲专业</span>-->
+                    <!--                    </button>-->
+                    <a class="navbar-brand" href="/">孙教授讲专业</a>
+                </div>
+                <div class="col-lg-3 col-xs-3 col-md-3">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li th:if="${session.loginUser != null}" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                <span  th:text="${session.loginUser.username}"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu col-lg-3 col-xs-3 col-md-3">
+                                <li><a href="/front/logout">退出登录</a></li>
+                            </ul>
+                        </li>
+                        <li th:if="${session.loginUser == null}">
+                            <button  onclick="window.location.href = '/login'" type="button" class="btn btn-default navbar-btn" style="margin-right: 20px">
+                                登录
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<!--                <ul class="nav navbar-nav">-->
-<!--                    <li><a href="#">视频课堂</a></li>-->
-<!--                    <li><a href="#">资讯</a></li>-->
-<!--                </ul>-->
-                <ul class="nav navbar-nav navbar-right">
-                    <li th:if="${session.loginUser != null}" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
-                            <span  th:text="${session.loginUser.username}"></span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/logout">退出登录</a></li>
-                        </ul>
-                    </li>
-                    <li th:if="${session.loginUser == null}">
-                        <button  onclick="window.location.href = '/login'" type="button" class="btn btn-default navbar-btn" style="margin-right: 20px">
-                            登录
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </nav>
-</div>
-<div style="margin-top: 50px">
-    <div class="container-fluid main" style="margin-top: 70px">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="jumbotron" >
-                    <h1 style="text-align: center">讲专业，我们更专业</h1>
+        </nav>
+    </div>
+    <div style="margin-top: 50px">
+        <div class="container-fluid main" style="margin-top: 70px">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jumbotron" >
+                        <h1 style="text-align: center">讲专业，我们更专业</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="menu">
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon ">
-                <a class="glyphicon glyphicon-home" href="/school" style="text-decoration: none;"></a>
-                <h4>找学校</h4>
-            </div>
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
-                <a class="glyphicon glyphicon-th-large" href="/profession" style="text-decoration: none;" ></a>
-                <h4>查专业</h4>
-            </div>
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
-                <a class="glyphicon glyphicon-signal" href="" style="text-decoration: none;"></a>
-                <h4>录取分数线</h4>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="menu">
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
-                <a class="glyphicon glyphicon-th-list" href="/scoreline" style="text-decoration: none;"></a>
-                <h4>批次线</h4>
-            </div>
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
-                <a class="glyphicon glyphicon-list-alt" href="#" style="text-decoration: none;"></a>
-                <h4>专业测评</h4>
-            </div>
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
-                <a class="glyphicon glyphicon-question-sign" href="/simulation" style="text-decoration: none;"></a>
-                <h4>模拟填报</h4>
+        <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="menu">
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon ">
+                    <a class="glyphicon glyphicon-home" href="/school" style="text-decoration: none;"></a>
+                    <h4>找学校</h4>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
+                    <a class="glyphicon glyphicon-th-large" href="/profession" style="text-decoration: none;" ></a>
+                    <h4>查专业</h4>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
+                    <a class="glyphicon glyphicon-signal" href="" style="text-decoration: none;"></a>
+                    <h4>录取分数线</h4>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="menu">
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
-                <a class="glyphicon glyphicon-pencil" href="#" style="text-decoration: none;"></a>
-                <h4>一键填报</h4>
+        <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="menu">
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
+                    <a class="glyphicon glyphicon-th-list" href="/scoreline" style="text-decoration: none;"></a>
+                    <h4>批次线</h4>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
+                    <a class="glyphicon glyphicon-list-alt" href="#" style="text-decoration: none;"></a>
+                    <h4>专业测评</h4>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
+                    <a class="glyphicon glyphicon-question-sign" href="/simulation" style="text-decoration: none;"></a>
+                    <h4>模拟填报</h4>
+                </div>
             </div>
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
-                <a class="glyphicon glyphicon-film" href="" style="text-decoration: none;"></a>
-                <h4>专业视频讲解</h4>
-            </div>
-            <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
-                <a class="glyphicon glyphicon-user" href="#" style="text-decoration: none;"></a>
-                <h4>入驻志愿专家</h4>
+        </div>
+        <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="menu">
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
+                    <a class="glyphicon glyphicon-pencil" href="#" style="text-decoration: none;"></a>
+                    <h4>一键填报</h4>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
+                    <a class="glyphicon glyphicon-film" href="" style="text-decoration: none;"></a>
+                    <h4>专业视频讲解</h4>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 score-icon">
+                    <a class="glyphicon glyphicon-user" href="#" style="text-decoration: none;"></a>
+                    <h4>入驻志愿专家</h4>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div style="position: fixed; width:90%;height:5%;bottom:10px;left:5%;right:5%;">
-    <h5 style="text-align: center">陕ICP备19023803号</h5>
+        <h5 style="text-align: center">陕ICP备19023803号</h5>
 </div>
 </body>
 </html>

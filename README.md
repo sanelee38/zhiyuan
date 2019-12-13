@@ -24,3 +24,8 @@ The following guides illustrate how to use some features concretely:
 * [Using Spring Data JDBC](https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics)
 
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+
+ mvn clean compile package -Dmaven.test.skip=true
+
+
+java -jar target/community-0.0.1-SNAPSHOT.jar
