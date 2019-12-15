@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>考生个人基本信息</title>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8;width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var msg =data["msg"];
+            alert(msg);
+        });
+
+    </script>
+</head>
+<body style="line-height: 0px;">
+<div th:fragment="nav">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/#">志愿方案生成</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">首页</a></li>
+                    <li th:if="${session.loginUser != null}" class="dropdown">
+                        <a href="/profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
+                            <span  th:text="${session.loginUser.username}"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/front/logout">退出登录</a></li>
+                        </ul>
+                    </li>
+                    <li th:if="${session.loginUser == null}">
+                        <button  onclick="window.location.href = '/front/login'" type="button" class="btn btn-default navbar-btn" style="margin-right: 20px">
+                            登录
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container" style="text-align: center">
+    <div>
+        <span>
+            <h3>请完善个人信息</h3>
+            <h4 style="color: red">(请注意！带*号为必填项，本页面数据提交后不可修改，请认真填写，确认无误后再提交！！！)</h4>
+        </span>
+    </div>
+    <form class="form-inline" action="/adduserBasicInformation" method="post" >
+        <div class="form-group">
+            <div class="input-group-addon">请输入考生姓名</div>
+            <div style="color: red"><input type="text" id="userRealname" class="form-control" name="userRealname" placeholder="请输入考生姓名">*</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请选择考生性别</div>
+            <div style="color: red">
+                <select class="form-control" id="userGender" name="userGender" th:selected="男">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>*
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请输入电话号码</div>
+            <div style="color: red"><input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="请输入电话号码">*</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请输入微信号</div>
+            <div style="color: red"><input type="text" class="form-control" id="userWechat" name="userWechat" placeholder="请输入微信号">*</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请输入考生高考分数</div>
+            <div style="color: red"><input type="text" class="form-control" id="userScore" name="userScore" placeholder="请输入考生高考分数">*</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请输入考生位次</div>
+            <div style="color: red"><input type="text" class="form-control" id="userRank" name="userRank" placeholder="请输入考生位次">*</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请选择参加高考省份</div>
+            <div style="color: red">
+                <select class="form-control" name="userArea">
+                    <option value="陕西">陕西</option>
+                    <option value="河南">河南</option>
+                    <option value="四川">四川</option>
+                    <option value="湖北">湖北</option>
+                    <option value="甘肃">甘肃</option>
+                    <option value="河北">河北</option>
+                    <option value="天津">天津</option>
+                    <option value="上海">上海</option>
+                    <option value="黑龙江">黑龙江</option>
+                    <option value="吉林">吉林</option>
+                    <option value="辽宁">辽宁</option>
+                    <option value="内蒙古">内蒙古</option>
+                    <option value="宁夏">宁夏</option>
+                    <option value="新疆">新疆</option>
+                    <option value="青海">青海</option>
+                    <option value="广东">广东</option>
+                    <option value="广西">广西</option>
+                    <option value="福建">福建</option>
+                    <option value="西藏">西藏</option>
+                    <option value="海南">海南</option>
+                    <option value="浙江">浙江</option>
+                    <option value="江西">江西</option>
+                    <option value="安徽">安徽</option>
+                    <option value="重庆">重庆</option>
+                    <option value="北京">北京</option>
+                    <option value="云南">云南</option>
+                    <option value="湖南">湖南</option>
+                    <option value="贵州">贵州</option>
+                    <option value="香港">香港</option>
+                    <option value="澳门">澳门</option>
+                    <option value="台湾">台湾</option>
+                    <option value="云南">云南</option>
+                    <option value="山东">山东</option>
+                    <option value="山西">山西</option>
+                </select>*
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请选择文理科</div>
+            <div style="color: red"><select class="form-control" name="userSort" th:selected="理科">
+                <option value="文科">文科</option>
+                <option value="理科">理科</option>
+            </select>*</div>
+        </div>
+
+        <div style="margin-top: 30px">
+            <h3 th:text="${msg}" style="color: red"></h3>
+            <button type="submit" class="btn btn-primary" >确认考生基本信息并提交</button>
+        </div>
+
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -15,4 +15,16 @@ public interface GaoKaoExtMapper {
     List<GaoKao> selectByProname(GaoKaoDTO gaoKaoDTO);
 
     List<GaoKao> searchByScore_Province_Object_Direction(GaoKaoDTO gaoKaoDTO);
+
+    List<GaoKao> selectChongBySelect(int score, String area, String sort, String province1, String province2, String province3);
+
+    List<GaoKao> selectWenBySelect(int score, String area, String sort, String province1, String province2, String province3);
+
+    List<GaoKao> selectBaoBySelect(int score, String area, String sort, String province1, String province2, String province3);
+
+    List<GaoKao> selectChongSchoolProfession(int score, String sort, String school, String area);
+
+    List<GaoKao> selectWenSchoolProfession(int score, String sort, String school, String area);
+
+    List<GaoKao> selectBaoSchoolProfession(int score, String sort, String school, String area);
 }

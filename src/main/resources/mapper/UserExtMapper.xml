@@ -22,7 +22,17 @@
     <result column="token" jdbcType="VARCHAR" property="token" />
     <result column="vip" jdbcType="INTEGER" property="vip" />
   </resultMap>
-  <select id="findByToken" parameterType="com.sanelee.zhiyuan.Model.UserExample" resultMap="BaseResultMap">
+  <select id="findByToken" parameterType="com.sanelee.zhiyuan.Model.User" resultMap="BaseResultMap">
     select * from user where token = #{token}
   </select>
+  <select id="selectUserInfoByUsername" parameterType="com.sanelee.zhiyuan.Model.User" resultMap="BaseResultMap">
+    select * from user where userName = #{username}
+  </select>
+  <select id="findByUserNameAndUserPhone" parameterType="com.sanelee.zhiyuan.Model.User" resultMap="BaseResultMap">
+    select * from user where userRealname = #{userRealname} and userphone=#{userPhone}
+  </select>
+
+  <update id="saveUser" parameterType="com.sanelee.zhiyuan.Model.User">
+    update user SET userRealname=#{userrealname},usergender=#{usergender},userwechat=#{userwechat},userscore=#{userscore},userarea=#{userarea},usersort=#{usersort},userrank=#{userrank} where userphone=#{userphone}
+  </update>
 </mapper>

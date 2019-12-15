@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>志愿报告</title>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8;width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div th:fragment="nav">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/#">志愿方案生成</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">首页</a></li>
+                    <li th:if="${session.loginUser != null}" class="dropdown">
+                        <a href="/profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
+                            <span  th:text="${session.loginUser.username}"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/front/logout">退出登录</a></li>
+                        </ul>
+                    </li>
+                    <li th:if="${session.loginUser == null}">
+                        <button  onclick="window.location.href = '/front/login'" type="button" class="btn btn-default navbar-btn" style="margin-right: 20px">
+                            登录
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container" style="text-align: center">
+    <h4>请输入志愿意向信息</h4>
+    <form class="form-inline" action="/exportreportZhiyuan" method="post">
+        <div class="form-group">
+            <input type="hidden" name="username" th:value="${session.loginUser.username}">
+            <div class="input-group-addon">请选择意向学校区域（三个）</div>
+            <select class="form-control" name="province1">
+                <option value="陕西">陕西</option>
+                <option value="河南">河南</option>
+                <option value="四川">四川</option>
+                <option value="湖北">湖北</option>
+                <option value="甘肃">甘肃</option>
+                <option value="河北">河北</option>
+                <option value="天津">天津</option>
+                <option value="上海">上海</option>
+                <option value="黑龙江">黑龙江</option>
+                <option value="吉林">吉林</option>
+                <option value="辽宁">辽宁</option>
+                <option value="内蒙古">内蒙古</option>
+                <option value="宁夏">宁夏</option>
+                <option value="新疆">新疆</option>
+                <option value="青海">青海</option>
+                <option value="广东">广东</option>
+                <option value="广西">广西</option>
+                <option value="福建">福建</option>
+                <option value="西藏">西藏</option>
+                <option value="海南">海南</option>
+                <option value="浙江">浙江</option>
+                <option value="江西">江西</option>
+                <option value="安徽">安徽</option>
+                <option value="重庆">重庆</option>
+                <option value="北京">北京</option>
+                <option value="云南">云南</option>
+                <option value="湖南">湖南</option>
+                <option value="贵州">贵州</option>
+                <option value="香港">香港</option>
+                <option value="澳门">澳门</option>
+                <option value="台湾">台湾</option>
+                <option value="云南">云南</option>
+                <option value="山东">山东</option>
+                <option value="山西">山西</option>
+            </select>
+            <select class="form-control" name="province2">
+                <option value="陕西">陕西</option>
+                <option value="河南">河南</option>
+                <option value="四川">四川</option>
+                <option value="湖北">湖北</option>
+                <option value="甘肃">甘肃</option>
+                <option value="河北">河北</option>
+                <option value="天津">天津</option>
+                <option value="上海">上海</option>
+                <option value="黑龙江">黑龙江</option>
+                <option value="吉林">吉林</option>
+                <option value="辽宁">辽宁</option>
+                <option value="内蒙古">内蒙古</option>
+                <option value="宁夏">宁夏</option>
+                <option value="新疆">新疆</option>
+                <option value="青海">青海</option>
+                <option value="广东">广东</option>
+                <option value="广西">广西</option>
+                <option value="福建">福建</option>
+                <option value="西藏">西藏</option>
+                <option value="海南">海南</option>
+                <option value="浙江">浙江</option>
+                <option value="江西">江西</option>
+                <option value="安徽">安徽</option>
+                <option value="重庆">重庆</option>
+                <option value="北京">北京</option>
+                <option value="云南">云南</option>
+                <option value="湖南">湖南</option>
+                <option value="贵州">贵州</option>
+                <option value="香港">香港</option>
+                <option value="澳门">澳门</option>
+                <option value="台湾">台湾</option>
+                <option value="云南">云南</option>
+                <option value="山东">山东</option>
+                <option value="山西">山西</option>
+            </select>
+            <select class="form-control" name="province3">
+                <option value="陕西">陕西</option>
+                <option value="河南">河南</option>
+                <option value="四川">四川</option>
+                <option value="湖北">湖北</option>
+                <option value="甘肃">甘肃</option>
+                <option value="河北">河北</option>
+                <option value="天津">天津</option>
+                <option value="上海">上海</option>
+                <option value="黑龙江">黑龙江</option>
+                <option value="吉林">吉林</option>
+                <option value="辽宁">辽宁</option>
+                <option value="内蒙古">内蒙古</option>
+                <option value="宁夏">宁夏</option>
+                <option value="新疆">新疆</option>
+                <option value="青海">青海</option>
+                <option value="广东">广东</option>
+                <option value="广西">广西</option>
+                <option value="福建">福建</option>
+                <option value="西藏">西藏</option>
+                <option value="海南">海南</option>
+                <option value="浙江">浙江</option>
+                <option value="江西">江西</option>
+                <option value="安徽">安徽</option>
+                <option value="重庆">重庆</option>
+                <option value="北京">北京</option>
+                <option value="云南">云南</option>
+                <option value="湖南">湖南</option>
+                <option value="贵州">贵州</option>
+                <option value="香港">香港</option>
+                <option value="澳门">澳门</option>
+                <option value="台湾">台湾</option>
+                <option value="云南">云南</option>
+                <option value="山东">山东</option>
+                <option value="山西">山西</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请选择期望的专业方向(6个)</div>
+            <select class="form-control" name="direction1">
+                <option>理学</option>
+                <option>医学</option>
+                <option>农学</option>
+                <option>经济</option>
+                <option>管理</option>
+            </select>
+            <select class="form-control" name="direction2">
+                <option>理学</option>
+                <option>医学</option>
+                <option>农学</option>
+                <option>经济</option>
+                <option>管理</option>
+            </select>
+            <select class="form-control" name="direction3">
+                <option>理学</option>
+                <option>医学</option>
+                <option>农学</option>
+                <option>经济</option>
+                <option>管理</option>
+            </select>
+            <select class="form-control" name="direction4">
+                <option>理学</option>
+                <option>医学</option>
+                <option>农学</option>
+                <option>经济</option>
+                <option>管理</option>
+            </select>
+            <select class="form-control" name="direction5">
+                <option>理学</option>
+                <option>医学</option>
+                <option>农学</option>
+                <option>经济</option>
+                <option>管理</option>
+            </select>
+            <select class="form-control" name="direction6">
+                <option>理学</option>
+                <option>医学</option>
+                <option>农学</option>
+                <option>经济</option>
+                <option>管理</option>
+            </select>
+        </div>
+
+        <div class="form-group" style="margin-top: 50px">
+            <button type="submit" class="btn btn-primary">提交并生成报告</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

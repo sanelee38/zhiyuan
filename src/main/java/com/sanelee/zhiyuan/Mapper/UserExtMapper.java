@@ -10,4 +10,10 @@ import java.util.List;
 public interface UserExtMapper {
 
     User findByToken(String token);
+
+    void saveUser(User user);
+
+    User selectUserInfoByUsername(String username);
+
+    User findByUserNameAndUserPhone(String userRealname, String userPhone);
 }

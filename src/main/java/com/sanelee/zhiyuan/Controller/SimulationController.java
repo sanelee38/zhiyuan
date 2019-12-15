@@ -26,8 +26,8 @@ public class SimulationController {
 
     @RequestMapping("simulation")
     public String simulation(HttpServletRequest request,Model model){
-        User user = (User)request.getSession().getAttribute("loginUser");
-        model.addAttribute("user",user);
+//        User user = (User)request.getSession().getAttribute("loginUser");
+//        model.addAttribute("user",user);
         return "simulation";
     }
     @GetMapping("/simulationResult")

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>分数线</title>
+    <title>模拟志愿填报</title>
     <meta name="viewport" http-equiv="Content-Type"
           content="text/html; charset=UTF-8;width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -57,7 +57,7 @@
         <form name="demo" class="form-inline">
             <div class="form-group">
                 <div>
-                    <h4 th:text="${user.username}+'请输入高考分数'"></h4>
+                    <h4 th:text="${session.loginUser.username}+'请输入高考分数'"></h4>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">分数</span>
