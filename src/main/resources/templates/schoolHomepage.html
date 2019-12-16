@@ -115,7 +115,7 @@
                                     <td th:text="${score.max == -1}?' ':${score.max}"></td>
                                     <td th:text="${score.average == -1}?' ':${score.average}"></td>
                                     <td th:text="${score.min}"></td>
-                                    <td th:text="${score.minSection}"></td>
+                                    <td th:text="${score.minSection == -1}?' ':${score.minSection}"></td>
                                 </tr>
                                 </tbody>
                             </table>
