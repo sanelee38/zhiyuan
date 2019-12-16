@@ -47,17 +47,19 @@
         <table class="table">
             <thead>
             <tr>
-                <th class="active">概率</th>
+                <th class="active" style="width: 60px">概率</th>
                 <th class="active">学校</th>
-                <th class="active">地区</th>
-                <th class="active">招生计划</th>
+                <th class="active" style="width: 60px">地区</th>
+                <th class="active" style="width: 80px">招生计划</th>
                 <th class="active">专业</th>
             </tr>
             </thead>
             <tbody th:each="gaokaos:${gaokao}">
             <tr>
                 <td class="active" th:text="暂无"></td>
-                <td class="active" th:text="${gaokaos.name}"></td>
+                <td class="active"  th:text="${gaokaos.name}"></td>
+                <td class="active" th:text="${gaokaos.areaname}"></td>
+                <td class="active" th:text="暂无"></td>
                 <td class="active" th:text="${gaokaos.spname}"></td>
             </tr>
             </tbody>
