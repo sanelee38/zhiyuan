@@ -12,6 +12,7 @@ spring:
     encoding: utf-8
     servlet:
       content-type: text/html
+
 server:
   port: 9090
 mybatis:

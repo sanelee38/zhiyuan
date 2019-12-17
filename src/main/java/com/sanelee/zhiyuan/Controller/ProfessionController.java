@@ -24,7 +24,7 @@ public class ProfessionController {
     @RequestMapping("/profession")
     public String Profession(Model model,
                              @RequestParam(name = "page",defaultValue = "1") Integer page,
-                             @RequestParam(name = "size",defaultValue = "11") Integer size,
+                             @RequestParam(name = "size",defaultValue = "10") Integer size,
                              @RequestParam(name = "major",required = false) String major,
                              @RequestParam(name = "search",required = false) String search,
                              @RequestParam(name = "subject",required = false) String subject,

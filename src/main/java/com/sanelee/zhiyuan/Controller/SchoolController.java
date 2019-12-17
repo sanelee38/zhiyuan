@@ -29,7 +29,7 @@ public class SchoolController {
     @GetMapping("/school")
     public String school(Model model,
                          @RequestParam(name = "page",defaultValue = "1") Integer page,
-                         @RequestParam(name = "size",defaultValue = "7") Integer size,
+                         @RequestParam(name = "size",defaultValue = "6") Integer size,
                          @RequestParam(name = "areaid",required = false) Integer areaid,
                          @RequestParam(name = "search",required = false) String search,
                          @RequestParam(name = "type",required = false) String type,
