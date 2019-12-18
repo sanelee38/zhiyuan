@@ -36,7 +36,12 @@ public class ReportController {
 
 
     @RequestMapping("/reportZhiyuan")
-    public String reportZhiyuan(Model model){
+    public String reportZhiyuan(Map<String,Object> map,
+                                HttpServletRequest request,
+                                Model model){
+        User user = (User)request.getSession().getAttribute("loginUser");
+        User userscore = userExtMapper.getScoreByPhone(user.getUserphone());
+        model.addAttribute("score",userscore);
         return "reportZhiyuan";
     }
     @RequestMapping(value = "/exportreportZhiyuan",method= RequestMethod.POST)

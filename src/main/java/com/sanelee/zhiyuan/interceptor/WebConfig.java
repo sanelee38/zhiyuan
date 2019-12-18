@@ -14,6 +14,10 @@ public class WebConfig implements WebMvcConfigurer {
         List exclude = new ArrayList();//不拦截的列表
         exclude.add("/");
         exclude.add("/index.html");
+        exclude.add("/school/**");
+        exclude.add("/profession/**");
+        exclude.add("/schoolHomepage/**");
+        exclude.add("/professionHomepage/**");
         exclude.add("/front/login");
         exclude.add("/front/logout");
         exclude.add("/front/**");

@@ -31,6 +31,9 @@
   <select id="findByUserNameAndUserPhone" parameterType="com.sanelee.zhiyuan.Model.User" resultMap="BaseResultMap">
     select * from user where userRealname = #{userRealname} and userphone=#{userPhone}
   </select>
+  <select id="getScoreByPhone" parameterType="com.sanelee.zhiyuan.Model.User" resultMap="BaseResultMap">
+    select userscore from user where userphone=#{userPhone}
+  </select>
 
   <update id="saveUser" parameterType="com.sanelee.zhiyuan.Model.User">
     update user SET userRealname=#{userrealname},usergender=#{usergender},userwechat=#{userwechat},userscore=#{userscore},userarea=#{userarea},usersort=#{usersort},userrank=#{userrank} where userphone=#{userphone}

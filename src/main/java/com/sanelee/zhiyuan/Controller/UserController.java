@@ -30,7 +30,7 @@ public class UserController {
             return "userBasicInformation";
         }
         else {
-            return "reportZhiyuan";
+            return "redirect:/reportZhiyuan";
         }
 
     }

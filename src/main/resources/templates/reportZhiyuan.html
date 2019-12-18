@@ -62,7 +62,7 @@
         </div>
     </div>
 <div class="container" style="text-align: center">
-    <h4 th:text="${session.loginUser.userarea}+${session.loginUser.usersort}+'考生'+'&nbsp;'+'&nbsp;'+'分数:'+'&nbsp;'+${session.loginUser.userscore}"></h4>
+    <h4 th:text="${session.loginUser.userarea}+${session.loginUser.usersort}+'考生'+'&nbsp;'+'&nbsp;'+'分数:'+'&nbsp;'+${score.userscore}"></h4>
     <div style="margin-top: 70px">
         <h4>请输入志愿意向信息</h4>
         <form class="form-inline" action="/exportreportZhiyuan" method="post">

@@ -16,4 +16,6 @@ public interface UserExtMapper {
     User selectUserInfoByUsername(String username);
 
     User findByUserNameAndUserPhone(String userRealname, String userPhone);
+
+    User getScoreByPhone(String userphone);
 }
