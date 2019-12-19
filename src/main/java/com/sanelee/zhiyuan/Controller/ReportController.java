@@ -2,11 +2,10 @@ package com.sanelee.zhiyuan.Controller;
 
 
 import com.sanelee.zhiyuan.Mapper.GaoKaoExtMapper;
+import com.sanelee.zhiyuan.Mapper.SchoolExtMapper;
 import com.sanelee.zhiyuan.Mapper.UserExtMapper;
 import com.sanelee.zhiyuan.Mapper.UserMapper;
-import com.sanelee.zhiyuan.Model.GaoKao;
-import com.sanelee.zhiyuan.Model.User;
-import com.sanelee.zhiyuan.Model.UserExample;
+import com.sanelee.zhiyuan.Model.*;
 import com.sanelee.zhiyuan.Util.ExportWordUtils;
 
 import org.apache.poi.hssf.usermodel.*;
@@ -34,6 +33,9 @@ public class ReportController {
     @Autowired
     private GaoKaoExtMapper gaoKaoExtMapper;
 
+    @Autowired
+    private SchoolExtMapper schoolExtMapper;
+
 
     @RequestMapping("/reportZhiyuan")
     public String reportZhiyuan(Map<String,Object> map,
@@ -41,7 +43,11 @@ public class ReportController {
                                 Model model){
         User user = (User)request.getSession().getAttribute("loginUser");
         User userscore = userExtMapper.getScoreByPhone(user.getUserphone());
+        SchoolExample example = new SchoolExample();
+        example.setDistinct(true);
+        List<School> typeList = schoolExtMapper.selectTypeByExample(example);
         model.addAttribute("score",userscore);
+        model.addAttribute("type",typeList);
         return "reportZhiyuan";
     }
     @RequestMapping(value = "/exportreportZhiyuan",method= RequestMethod.POST)
@@ -52,12 +58,12 @@ public class ReportController {
                               @RequestParam(name = "province1",required = false) String province1,
                               @RequestParam(name = "province2",required = false) String province2,
                               @RequestParam(name = "province3",required = false) String province3,
-                              @RequestParam(name = "direction1",required = false) String direction1,
-                              @RequestParam(name = "direction2",required = false) String direction2,
-                              @RequestParam(name = "direction3",required = false) String direction3,
-                              @RequestParam(name = "direction4",required = false) String direction4,
-                              @RequestParam(name = "direction5",required = false) String direction5,
-                              @RequestParam(name = "direction6",required = false) String direction6){
+                              @RequestParam(name = "type1",required = false) String type1,
+                              @RequestParam(name = "type2",required = false) String type2,
+                              @RequestParam(name = "type3",required = false) String type3,
+                              @RequestParam(name = "type4",required = false) String type4,
+                              @RequestParam(name = "type5",required = false) String type5,
+                              @RequestParam(name = "type6",required = false) String type6){
 
         User user=userExtMapper.selectUserInfoByUsername(username);
 
@@ -70,9 +76,9 @@ public class ReportController {
         int score = user.getUserscore();
         int rank = user.getUserrank();
 
-        List<GaoKao> schoollist=gaoKaoExtMapper.selectChongBySelect(score,area,sort,province1,province2,province3);
-        List<GaoKao> schoollist2=gaoKaoExtMapper.selectWenBySelect(score,area,sort,province1,province2,province3);
-        List<GaoKao> schoollist3=gaoKaoExtMapper.selectBaoBySelect(score,area,sort,province1,province2,province3);
+        List<GaoKao> schoollist=gaoKaoExtMapper.selectChongBySelect(score,area,sort,province1,province2,province3,type1,type2,type3,type4,type5,type6);
+        List<GaoKao> schoollist2=gaoKaoExtMapper.selectWenBySelect(score,area,sort,province1,province2,province3,type1,type2,type3,type4,type5,type6);
+        List<GaoKao> schoollist3=gaoKaoExtMapper.selectBaoBySelect(score,area,sort,province1,province2,province3,type1,type2,type3,type4,type5,type6);
 
 
 

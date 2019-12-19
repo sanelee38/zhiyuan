@@ -38,13 +38,13 @@
     select * from gaokao where min between #{score}-25 and #{score}+5 and local_province_name=#{province} and local_type_name=#{object}
   </select>
   <select id="selectChongBySelect" parameterType="com.sanelee.zhiyuan.Model.GaoKao" resultMap="BaseResultMap">
-    select name ,count(*),spname,rank FROM gaokao where min between #{score}-5 and #{score}+10 AND areaname REGEXP '${province1}|${province2}|${province3}' and local_province_name =#{area} and local_type_name=#{sort} GROUP BY NAME HAVING COUNT(*)>=6 ORDER BY rank
+    select name ,count(*),spname,rank FROM gaokao where min between #{score}-5 and #{score}+10 AND areaname REGEXP '${province1}|${province2}|${province3}' and local_province_name =#{area} and local_type_name=#{sort} and type regexp '${type1}|{type2}|{type3}|{type4}|{type5}|{type6}' GROUP BY NAME HAVING COUNT(*)>=6 ORDER BY rank
   </select>
   <select id="selectWenBySelect" parameterType="com.sanelee.zhiyuan.Model.GaoKao" resultMap="BaseResultMap">
-    select name ,count(*),spname,rank FROM gaokao where min between #{score}-30 and #{score}-6 AND areaname REGEXP '${province1}|${province2}|${province3}' and local_province_name =#{area} and local_type_name=#{sort} GROUP BY NAME HAVING COUNT(*)>=6 ORDER BY rank
+    select name ,count(*),spname,rank FROM gaokao where min between #{score}-30 and #{score}-6 AND areaname REGEXP '${province1}|${province2}|${province3}' and local_province_name =#{area} and local_type_name=#{sort} and type regexp '${type1}|{type2}|{type3}|{type4}|{type5}|{type6}' GROUP BY NAME HAVING COUNT(*)>=6 ORDER BY rank
   </select>
   <select id="selectBaoBySelect" parameterType="com.sanelee.zhiyuan.Model.GaoKao" resultMap="BaseResultMap">
-    select name ,count(*),spname,rank FROM gaokao where min between #{score}-70 and #{score}+-31 AND areaname REGEXP '${province1}|${province2}|${province3}' and local_province_name =#{area} and local_type_name=#{sort} GROUP BY NAME HAVING COUNT(*)>=6 ORDER BY rank
+    select name ,count(*),spname,rank FROM gaokao where min between #{score}-70 and #{score}+-31 AND areaname REGEXP '${province1}|${province2}|${province3}' and local_province_name =#{area} and local_type_name=#{sort} and type regexp '${type1}|{type2}|{type3}|{type4}|{type5}|{type6}' GROUP BY NAME HAVING COUNT(*)>=6 ORDER BY rank
   </select>
   <select id="selectChongSchoolProfession" parameterType="com.sanelee.zhiyuan.Model.GaoKao" resultMap="BaseResultMap">
     select * from gaokao where min between #{score}-5 and #{score}+10 and name=#{school} and local_province_name =#{area} and local_type_name=#{sort} order by min desc

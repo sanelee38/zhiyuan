@@ -19,8 +19,13 @@
             document.demo.submit();
         }
     </script>
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: #f5f4f8">
 <div style="height: 100px;background-color: white">
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
         <div style="display: inline-block;margin-top: 20px">
@@ -72,22 +77,58 @@
             </ul>
         </div>
     </div>
-    <div class="container" style="text-align: center;margin-top: 100px">
-        <form name="demo" class="form-inline">
-            <div class="form-group">
-                <div>
-                    <h4 th:text="${session.loginUser.username}+'请输入高考分数'"></h4>
+    <div style="background-color:white; overflow: hidden;display: inline-block;;text-align: center;margin-top: 100px;margin-left: 20%;margin-right: 15px;width: 15%;height: 600px;">
+
+    </div>
+    <div  style="background-color:white; overflow: hidden;display: inline-block;;text-align: center;margin-top: 100px;width: 40%;height: 600px;">
+        <div style="margin-top: 80px">
+            <form name="demo" class="form-inline" >
+                <div class="form-group">
+                    <div>
+                        <h4 th:text="${session.loginUser.username}+'&nbsp;'+'请输入高考分数'"></h4>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">分数</span>
+                        <input type="text" class="form-control" name="score" placeholder="" aria-describedby="basic-addon1">
+                        <span class="input-group-addon">分</span>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">分数</span>
-                    <input type="text" class="form-control" name="score" placeholder="" aria-describedby="basic-addon1">
-                    <span class="input-group-addon">分</span>
-                </div>
+                <h3 th:text="${msg}" style="color: red"></h3>
+                <button class="btn btn-default" onclick="query();">查询提交</button>
+                <!--            <button class="btn btn-default" onclick="downloadFile();">数据导出</button>-->
+            </form>
+        </div>
+        <div style="width: 80%;height: 50%;text-align: center;margin-top: 10%;margin-left: 10%">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>批次</th>
+                        <th>2019理科批次线</th>
+                        <th>2019文科批次线</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>本科一批</td>
+                        <td>469</td>
+                        <td>518</td>
+                    </tr>
+                    <tr>
+                        <td>本科二批</td>
+                        <td>363</td>
+                        <td>400</td>
+                    </tr>
+                    <tr>
+                        <td>本科三批</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <h3 th:text="${msg}" style="color: red"></h3>
-            <button class="btn btn-default" onclick="query();">查询提交</button>
-            <!--            <button class="btn btn-default" onclick="downloadFile();">数据导出</button>-->
-        </form>
+        </div>
     </div>
 
 </div>

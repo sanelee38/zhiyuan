@@ -18,5 +18,7 @@ create table `gaokao` (
                           `areaname` varchar (765),
                           `is985` int (11),
                           `is211` int (11),
-                          `isDoubleFirstClass` int (11)
+                          `isDoubleFirstClass` int (11),
+                          `type` varchar(20)
+
 );
