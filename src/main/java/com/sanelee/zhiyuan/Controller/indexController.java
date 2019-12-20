@@ -65,6 +65,15 @@ public class indexController {
         String userSort = request.getParameter("userSort");
         String password = request.getParameter("password");
         String password2 = request.getParameter("password2");
+
+        if (userArea.equals("暂无")){
+            map.put("msg","请选择考生所在省份!");
+            return "register";
+        }
+        else if (userSort.equals("暂无")){
+            map.put("msg","请选择考生文理科!");
+            return "register";
+        }
         UserExample userExample1 = new UserExample();
         UserExample userExample2 = new UserExample();
         userExample1.createCriteria()
