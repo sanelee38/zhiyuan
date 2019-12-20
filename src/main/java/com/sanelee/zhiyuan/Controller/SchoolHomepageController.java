@@ -40,7 +40,8 @@ public class SchoolHomepageController {
         List<School> areaList = schoolExtMapper.selectAreaByExample(example1);
 
         GaoKaoExample example = new GaoKaoExample();
-        example.createCriteria().andScidEqualTo(scid).andLocalProvinceNameEqualTo(province);
+
+        example.createCriteria().andScidEqualTo(scid).andLocalProvinceNameEqualTo(province).andLocalTypeNameEqualTo(sort);
         List<GaoKao> gaoKao = gaoKaoMapper.selectByExample(example);
         model.addAttribute("schools",school);
         model.addAttribute("schoolscores",schoolScore);

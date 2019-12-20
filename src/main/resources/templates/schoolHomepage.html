@@ -78,8 +78,8 @@
                         <h3 class="panel-title">在陕录取分数线</h3>
                     </div>
                     <div class="panel-body" style="text-align: center">
-                        <a th:href="@{'/schoolHomepage/'+${scid}(sort=1)}"><button class="cardbutton"  style="background-color: #deded5" th:class="${sort==1}?'cardbutton2':'cardbutton'">理科</button></a>
-                        <a th:href="@{'/schoolHomepage/'+${scid}(sort=2)}"><button class="cardbutton"  style="background-color: #deded5" th:class="${sort==2}?'cardbutton2':'cardbutton'">文科</button></a>
+                        <a th:href="@{'/schoolHomepage/'+${scid}(sort=1)}"><button   th:class="${sort==1}?'cardbutton2':'cardbutton'">理科</button></a>
+                        <a th:href="@{'/schoolHomepage/'+${scid}(sort=2)}"><button   th:class="${sort==2}?'cardbutton2':'cardbutton'">文科</button></a>
                         <div>
                             <table class="table">
                                 <thead>

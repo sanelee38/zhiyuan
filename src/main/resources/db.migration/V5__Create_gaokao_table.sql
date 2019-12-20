@@ -12,7 +12,7 @@ create table `gaokao` (
                           `local_batch_name` varchar (93),
                           `spname` varchar (300),
                           `name` varchar (60),
-                          `local_type_name` varchar (30),
+                          `local_type_name` int (10),
                           `rank` int (11),
                           `proscore` varchar (765),
                           `areaname` varchar (765),
