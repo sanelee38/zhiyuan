@@ -307,3 +307,19 @@ a{
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+.vipbutton{
+    font-family: "'微软雅黑','Helvetica Neue',Helvetica,Arial,sans-serif";
+    font-size: 20px;
+    height: 58px;
+    line-height: 18px;
+    padding: 3px 18px;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: normal;
+    border-radius: 3px;
+    margin: 0 31px 0 3px;
+    border: 1px solid #3383da;
+    color: #ffffff;
+    background-color: #2e6da4;
+    cursor: pointer;
+}
