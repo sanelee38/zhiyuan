@@ -120,12 +120,10 @@ public class indexController {
         String password = request.getParameter("password");
         String pwd = MD5Util.string2MD5(password);
         HttpSession session = request.getSession();
-        UserExample userExample = new UserExample();
-        userExample.createCriteria().
-                andUsernameEqualTo(username).
-                andPasswordEqualTo(pwd);
-        List<User> users = userMapper.selectByExample(userExample);
-        User user = users.get(0);
+
+
+        User user=userExtMapper.loginquery(username,pwd);
+
         if (user !=null){
             String token = UUID.randomUUID().toString();
             User updateUser = new User();
