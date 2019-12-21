@@ -18,4 +18,6 @@ public interface UserExtMapper {
     User findByUserNameAndUserPhone(String userRealname, String userPhone);
 
     User getScoreByPhone(String userphone);
+
+    User loginquery(String username, String pwd);
 }

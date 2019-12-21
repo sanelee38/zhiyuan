@@ -4,6 +4,7 @@ import com.sanelee.zhiyuan.Mapper.UserExtMapper;
 import com.sanelee.zhiyuan.Mapper.UserMapper;
 import com.sanelee.zhiyuan.Model.User;
 import com.sanelee.zhiyuan.Model.UserExample;
+import com.sanelee.zhiyuan.Util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,7 +89,8 @@ public class indexController {
             user.setUserphone(userPhone);
             user.setUserarea(userArea);
             user.setUsersort(userSort);
-            user.setPassword(password);
+            String pwd = MD5Util.string2MD5(password);
+            user.setPassword(pwd);
             userMapper.insertSelective(user);
             System.out.println(username);
             System.out.println(userPhone);
@@ -116,11 +118,12 @@ public class indexController {
                            Model model){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String pwd = MD5Util.string2MD5(password);
         HttpSession session = request.getSession();
         UserExample userExample = new UserExample();
         userExample.createCriteria().
                 andUsernameEqualTo(username).
-                andPasswordEqualTo(password);
+                andPasswordEqualTo(pwd);
         List<User> users = userMapper.selectByExample(userExample);
         User user = users.get(0);
         if (user !=null){
