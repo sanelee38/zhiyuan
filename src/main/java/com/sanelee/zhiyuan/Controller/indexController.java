@@ -94,9 +94,6 @@ public class indexController {
             System.out.println(userPhone);
             map.put("msg","注册成功,请登录！");
             return "login";
-        }else if(userPhone.equals("")){
-            map.put("msg","请输入手机号！");
-            return "register";
         }
         else if(users1.size()!=0){
             map.put("msg","该用户名已存在！");
