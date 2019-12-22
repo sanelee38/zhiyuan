@@ -55,4 +55,25 @@
   <select id="selectBaoSchoolProfession" parameterType="com.sanelee.zhiyuan.Model.GaoKao" resultMap="BaseResultMap">
     select * from gaokao where min between #{score}-70 and #{score}-31 and name=#{school} and local_province_name =#{area} and local_type_name=#{sort} order by min desc
   </select>
+  <select id="schoolHighSearch" parameterType="com.sanelee.zhiyuan.Model.GaoKao" resultMap="BaseResultMap">
+    select DISTINCT name,scid,is985,is211,isDoubleFirstClass from gaokao
+    <where>
+      <if test="area != null and area !=''">
+        and areaname = #{area}
+      </if>
+      <if test="profession != null and profession !=''">
+        and spname regexp #{profession}
+      </if>
+      <if test="is211 != null and is211 !=''">
+        and is211=#{is211}
+      </if>
+      <if test="is985 != null and is985 !=''">
+        and is985=#{is985}
+      </if>
+      <if test="isDoubleFirstClass != null and isDoubleFirstClass !=''">
+        and isDoubleFirstClass=#{isDoubleFirstClass}
+      </if>
+    </where>
+    order by rank
+  </select>
 </mapper>

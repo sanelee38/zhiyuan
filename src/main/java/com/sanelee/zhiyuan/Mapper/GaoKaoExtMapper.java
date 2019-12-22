@@ -30,4 +30,5 @@ public interface GaoKaoExtMapper {
 
     List<GaoKao> selectBaoBySelect(int score, String area, String sort, String province1, String province2, String province3, String type1, String type2, String type3, String type4, String type5, String type6);
 
+    List<GaoKao> schoolHighSearch(String area, String profession, Integer is211, Integer is985, Integer isDoubleFirstClass);
 }

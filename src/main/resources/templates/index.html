@@ -52,6 +52,8 @@
 
                         </ul>
                     </li>
+                    <li><a href="/highSearch">高级搜索</a>
+                    </li>
                     <li th:if="${session.loginUser != null}" style="margin-left: 34%">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">
@@ -64,9 +66,6 @@
                     <li th:if="${session.loginUser == null}" style="margin-left: 34%">
                         <a href="/front/login">登录</a>
                     </li>
-
-
-
                 </ul>
             </div>
 <!--            <div class="row col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" style="height: 40px">-->

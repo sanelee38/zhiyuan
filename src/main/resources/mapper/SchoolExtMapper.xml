@@ -108,5 +108,4 @@
     </where>
     order by school.rank limit #{page},#{size}
   </select>
-
 </mapper>

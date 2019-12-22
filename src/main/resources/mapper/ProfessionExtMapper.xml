@@ -91,5 +91,8 @@
     select * from profession where proname=#{proname}
 
   </select>
+  <select id="selectProfession" parameterType="com.sanelee.zhiyuan.Model.Profession" resultMap="BaseResultMap">
+    select * from profession
+  </select>
 
 </mapper>
