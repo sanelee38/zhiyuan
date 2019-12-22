@@ -29,3 +29,6 @@ mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 
 
 java -jar target/community-0.0.1-SNAPSHOT.jar
+
+git tag -a v0.0.4 -m "v0.0.4"
+git push --tags

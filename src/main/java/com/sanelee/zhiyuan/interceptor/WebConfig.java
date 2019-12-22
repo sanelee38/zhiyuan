@@ -27,5 +27,6 @@ public class WebConfig implements WebMvcConfigurer {
         exclude.add("/js/**");
         registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/**")
                 .excludePathPatterns(exclude);
+        registry.addInterceptor(new VipInterceptor()).addPathPatterns("/highSearch/**");
     }
 }

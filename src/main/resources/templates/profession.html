@@ -24,7 +24,9 @@
 
         </div>
         <div style="display: inline-block;float: right; margin-top: 20px">
-            <button class="vipbutton"> 加入VIP</button>
+            <a href="/vipUser">
+                <button class="vipbutton"> 加入VIP</button>
+            </a>
         </div>
     </div>
 </div>
@@ -55,7 +57,7 @@
                 </li>
                 <li><a href="/highSearch">高级搜索</a>
                 </li>
-                <li th:if="${session.loginUser != null}" style="margin-left: 34%">
+                <li th:if="${session.loginUser != null}" style="margin-left: 22.7%">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
                         <span  th:text="${session.loginUser.username}+'&nbsp;'+'同学'"></span>
@@ -64,7 +66,7 @@
                         <li><a href="/front/logout">退出登录</a></li>
                     </ul>
                 </li>
-                <li th:if="${session.loginUser == null}" style="margin-left: 34%">
+                <li th:if="${session.loginUser == null}" style="margin-left: 22.7%">
                     <a href="/front/login">登录</a>
                 </li>
             </ul>
