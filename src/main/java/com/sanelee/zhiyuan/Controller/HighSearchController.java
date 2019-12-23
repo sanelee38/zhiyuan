@@ -1,5 +1,6 @@
 package com.sanelee.zhiyuan.Controller;
 
+import com.sanelee.zhiyuan.DTO.PaginationDTO;
 import com.sanelee.zhiyuan.Mapper.GaoKaoExtMapper;
 import com.sanelee.zhiyuan.Mapper.ProfessionExtMapper;
 import com.sanelee.zhiyuan.Mapper.ProfessionMapper;
@@ -45,7 +46,9 @@ public class HighSearchController {
                          @RequestParam(name = "type",required = false) Integer type
                          ){
 
-
+        if (area.equals("无")){
+            area = "";
+        }
         List<GaoKao> schoolSearchList = highSearchService.schoolHighSearch(area,profession,type);
         List<Profession> professionList = professionExtMapper.selectProfession();
         model.addAttribute("professionList",professionList);

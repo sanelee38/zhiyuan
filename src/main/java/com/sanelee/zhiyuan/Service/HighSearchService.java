@@ -1,5 +1,6 @@
 package com.sanelee.zhiyuan.Service;
 
+import com.sanelee.zhiyuan.DTO.PaginationDTO;
 import com.sanelee.zhiyuan.Mapper.GaoKaoExtMapper;
 import com.sanelee.zhiyuan.Model.GaoKao;
 import org.apache.commons.lang3.StringUtils;
@@ -38,8 +39,8 @@ public class HighSearchService {
             is985=null;
             isDoubleFirstClass=null;
         }
-
         List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area,profession,is211,is985,isDoubleFirstClass);
+
         return schoolSearchList;
     }
 
