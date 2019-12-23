@@ -59,7 +59,7 @@
     select DISTINCT name,scid,is985,is211,isDoubleFirstClass from gaokao
     <where>
       <if test="area != null and area !=''">
-        and areaname = #{area}
+        and areaname regexp #{area}
       </if>
       <if test="profession != null and profession !=''">
         and spname regexp #{profession}
