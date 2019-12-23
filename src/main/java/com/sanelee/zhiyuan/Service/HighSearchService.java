@@ -22,6 +22,7 @@ public class HighSearchService {
     public List<GaoKao> schoolHighSearch(String area, String profession, Integer type) {
         Profession professions = professionExtMapper.selectByProname(profession);
         String subject = professions.getSubject();
+        String major = professions.getMajor();
         if(StringUtils.isNotBlank(area)){
             String[] tags = StringUtils.split(area,",");
             area = Arrays.stream(tags).collect(Collectors.joining("|"));
@@ -44,7 +45,7 @@ public class HighSearchService {
             is985=null;
             isDoubleFirstClass=null;
         }
-        List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area,profession,is211,is985,isDoubleFirstClass,subject);
+        List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area,profession,is211,is985,isDoubleFirstClass,subject,major);
 
         return schoolSearchList;
     }

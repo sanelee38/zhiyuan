@@ -29,10 +29,10 @@
     <result column="isDoubleFirstClass" jdbcType="INTEGER" property="isdoublefirstclass" />
   </resultMap>
   <select id="selectByProname" parameterType="com.sanelee.zhiyuan.DTO.GaoKaoDTO" resultMap="BaseResultMap">
-    select distinct name,scid,is211,is985,isDoubleFirstClass,rank from gaokao where spname regexp #{spname} or spname regexp #{subject} order by rank limit #{page},#{size}
+    select distinct name,scid,is211,is985,isDoubleFirstClass,rank from gaokao where spname regexp #{spname} or spname regexp #{subject} or spname regexp #{major} order by rank limit #{page},#{size}
   </select>
   <select id="countSelectSchoolByProname" parameterType="com.sanelee.zhiyuan.DTO.GaoKaoDTO" resultType="java.lang.Integer">
-    select count(distinct name) from gaokao where spname regexp #{spname} or spname regexp #{subject}
+    select count(distinct name) from gaokao where spname regexp #{spname} or spname regexp #{subject} or spname regexp #{major}
   </select>
   <select id="searchByScore_Province_Object_Direction" parameterType="com.sanelee.zhiyuan.DTO.GaoKaoDTO" resultMap="BaseResultMap">
     select * from gaokao where min between #{score}-25 and #{score}+5 and local_province_name=#{province} and local_type_name=#{object}
@@ -62,7 +62,7 @@
         and areaname regexp #{area}
       </if>
       <if test="profession != null and profession !=''">
-        and spname regexp #{profession} or spname regexp #{subject}
+        and spname regexp #{profession} or spname regexp #{subject} or spname regexp #{major}
       </if>
       <if test="is211 != null and is211 !=''">
         and is211=#{is211}

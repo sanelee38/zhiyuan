@@ -23,6 +23,7 @@ public class GaoKaoService {
     public PaginationDTO list(Integer page, Integer size, String proname) {
         Profession profession = professionExtMapper.selectByProname(proname);
         String subject = profession.getSubject();
+        String major = profession.getMajor();
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
 
@@ -30,6 +31,7 @@ public class GaoKaoService {
 
         gaoKaoDTO.setSpname(proname);
         gaoKaoDTO.setSubject(subject);
+        gaoKaoDTO.setMajor(major);
         Integer totalCount = gaoKaoExtMapper.countSelectSchoolByProname(gaoKaoDTO);
 
         if (totalCount % size == 0) {

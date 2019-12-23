@@ -18,4 +18,5 @@ public class GaoKaoDTO {
     private Integer size;
     private String spname;
     private String subject;
+    private String major;
 }
