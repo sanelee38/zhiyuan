@@ -4,7 +4,9 @@ import com.sanelee.zhiyuan.DTO.GaoKaoDTO;
 import com.sanelee.zhiyuan.DTO.PaginationDTO;
 import com.sanelee.zhiyuan.Mapper.GaoKaoExtMapper;
 import com.sanelee.zhiyuan.Mapper.GaoKaoMapper;
+import com.sanelee.zhiyuan.Mapper.ProfessionExtMapper;
 import com.sanelee.zhiyuan.Model.GaoKao;
+import com.sanelee.zhiyuan.Model.Profession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +16,20 @@ import java.util.List;
 public class GaoKaoService {
     @Autowired
     private GaoKaoExtMapper gaoKaoExtMapper;
+    @Autowired
+    private ProfessionExtMapper professionExtMapper;
 
 
     public PaginationDTO list(Integer page, Integer size, String proname) {
+        Profession profession = professionExtMapper.selectByProname(proname);
+        String subject = profession.getSubject();
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
 
         GaoKaoDTO gaoKaoDTO = new GaoKaoDTO();
 
         gaoKaoDTO.setSpname(proname);
+        gaoKaoDTO.setSubject(subject);
         Integer totalCount = gaoKaoExtMapper.countSelectSchoolByProname(gaoKaoDTO);
 
         if (totalCount % size == 0) {

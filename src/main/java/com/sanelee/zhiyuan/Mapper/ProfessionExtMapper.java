@@ -25,4 +25,5 @@ public interface ProfessionExtMapper {
     Profession selectByProname(String proname);
 
     List<Profession> selectProfession();
+
 }

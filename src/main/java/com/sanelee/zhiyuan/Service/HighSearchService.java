@@ -2,7 +2,9 @@ package com.sanelee.zhiyuan.Service;
 
 import com.sanelee.zhiyuan.DTO.PaginationDTO;
 import com.sanelee.zhiyuan.Mapper.GaoKaoExtMapper;
+import com.sanelee.zhiyuan.Mapper.ProfessionExtMapper;
 import com.sanelee.zhiyuan.Model.GaoKao;
+import com.sanelee.zhiyuan.Model.Profession;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,11 @@ import java.util.stream.Collectors;
 public class HighSearchService {
     @Autowired
     private GaoKaoExtMapper gaoKaoExtMapper;
-
+    @Autowired
+    private ProfessionExtMapper professionExtMapper;
     public List<GaoKao> schoolHighSearch(String area, String profession, Integer type) {
+        Profession professions = professionExtMapper.selectByProname(profession);
+        String subject = professions.getSubject();
         if(StringUtils.isNotBlank(area)){
             String[] tags = StringUtils.split(area,",");
             area = Arrays.stream(tags).collect(Collectors.joining("|"));
@@ -39,7 +44,7 @@ public class HighSearchService {
             is985=null;
             isDoubleFirstClass=null;
         }
-        List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area,profession,is211,is985,isDoubleFirstClass);
+        List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area,profession,is211,is985,isDoubleFirstClass,subject);
 
         return schoolSearchList;
     }

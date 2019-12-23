@@ -17,4 +17,5 @@ public class GaoKaoDTO {
     private Integer page;
     private Integer size;
     private String spname;
+    private String subject;
 }
