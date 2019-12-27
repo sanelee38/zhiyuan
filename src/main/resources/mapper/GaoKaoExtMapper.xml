@@ -62,7 +62,7 @@
         and areaname regexp #{area}
       </if>
       <if test="profession != null and profession !=''">
-        and spname regexp #{profession} or spname regexp #{subject} or spname regexp #{major}
+      and (spname regexp #{profession} or spname regexp #{subject} or spname regexp #{major})
       </if>
       <if test="is211 != null and is211 !=''">
         and is211=#{is211}
