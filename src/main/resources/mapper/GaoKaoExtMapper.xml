@@ -71,7 +71,7 @@
         and isDoubleFirstClass=#{isDoubleFirstClass}
       </if>
       <if test="profession != null and profession !=''">
-        and (spname regexp #{profession} or spname regexp #{subject} or spname regexp #{major})
+        and (spname = #{profession} or spname regexp #{subject} or spname regexp #{major})
       </if>
       and local_province_name = '陕西'
     </where>
