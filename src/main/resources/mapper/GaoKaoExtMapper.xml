@@ -56,7 +56,7 @@
     select * from gaokao where min between #{score}-70 and #{score}-31 and name=#{school} and local_province_name =#{area} and local_type_name=#{sort} order by min desc
   </select>
   <select id="schoolHighSearch" parameterType="com.sanelee.zhiyuan.Model.GaoKao" resultMap="BaseResultMap">
-    select DISTINCT name,scid,is985,is211,isDoubleFirstClass,min,min_section,local_batch_name from gaokao
+    select DISTINCT name,scid,is985,is211,isDoubleFirstClass,min,min_section,local_batch_name,spname from gaokao
     <where>
       <if test="area != null and area !=''">
         and areaname regexp #{area}
