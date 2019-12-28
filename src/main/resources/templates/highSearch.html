@@ -167,6 +167,7 @@
                         <a th:href="@{'/schoolHomepage/'+${school.scid}}" style="text-decoration: none;">
                             <div class="media-body">
                                 <h4 class="media-heading" style="color: #333333" th:text="${school.name}"></h4>
+                                <h5 style="color: #080416" th:text="${profession}+'专业'+'&nbsp;'+${school.localBatchName}+'&nbsp;'+'最低分'+${school.min}+'&nbsp;'+'最低位次'+${school.minSection}"></h5>
                             </div>
                         </a>
                         <ol class="schooltitle">
