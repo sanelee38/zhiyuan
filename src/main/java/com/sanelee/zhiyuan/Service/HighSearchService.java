@@ -30,22 +30,42 @@ public class HighSearchService {
         Integer is211=null;
         Integer is985=null;
         Integer isDoubleFirstClass=null;
-        if (type==985){
-            is985=985;
-        }else if(type==211){
-            is211=211;
-        }else if(type==1){
-            isDoubleFirstClass=1;
-        }else if(type==0){
-            is211=0;
-            is985=0;
-            isDoubleFirstClass=0;
-        }else if(type==-1){
-            is211=null;
-            is985=null;
-            isDoubleFirstClass=null;
+        switch (type){
+            case 985:
+                is985=985;
+                break;
+            case 211:
+                is211=211;
+                break;
+            case 1:
+                isDoubleFirstClass=1;
+                break;
+            case 0:
+                is211=-1;
+                is985=-1;
+                isDoubleFirstClass=-1;
+                break;
+            case -1:
+                is211=null;
+                is985=null;
+                isDoubleFirstClass=null;
         }
-        List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area,profession,is211,is985,isDoubleFirstClass,subject,major);
+//        if (type==985){
+//            is985=985;
+//        }else if(type==211){
+//            is211=211;
+//        }else if(type==1){
+//            isDoubleFirstClass=1;
+//        }else if(type==0){
+//            is211=0;
+//            is985=0;
+//            isDoubleFirstClass=0;
+//        }else if(type==-1){
+//            is211=null;
+//            is985=null;
+//            isDoubleFirstClass=null;
+//        }
+        List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area, profession, is211, is985, isDoubleFirstClass, subject, major);
 
         return schoolSearchList;
     }

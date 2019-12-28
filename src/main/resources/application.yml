@@ -23,3 +23,7 @@ mybatis:
 jdbc:
   driverClass: com.mysql.cj.jdbc.Driver
   connectionURL: jdbc:mysql://mydbinstance1.ctgutwvlrngx.rds.cn-north-1.amazonaws.com.cn:3306/zhiyuan?characterEncoding=utf-8&serverTimezone=GMT%2B8&rewriteBatchedStatements=true
+
+logging:
+  level:
+    root: com.sanelee.zhiyuan.Mapper.GaokaoExtMapper=DEBUG
