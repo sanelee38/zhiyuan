@@ -163,7 +163,7 @@
         <div class="schoolList">
             <div class="container-fluid">
                 <ul class="list-group" id="dataSet" th:each="school:${schoolList}">
-                    <li class="media" style="height: 80px">
+                    <li class="media" style="height: 100px">
                         <a th:href="@{'/schoolHomepage/'+${school.scid}}" style="text-decoration: none;">
                             <div class="media-body">
                                 <h4 class="media-heading" style="color: #333333" th:text="${school.name}"></h4>
