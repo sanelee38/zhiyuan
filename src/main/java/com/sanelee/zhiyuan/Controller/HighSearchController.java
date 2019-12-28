@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HighSearchController {
@@ -41,21 +42,27 @@ public class HighSearchController {
     @RequestMapping(value = "/search",method= RequestMethod.POST)
     public String search(Model model,
                          HttpServletRequest request,
+                         Map<String,Object> map,
                          @RequestParam(name = "area",required = false) String area,
                          @RequestParam(name = "profession",required = false) String profession,
                          @RequestParam(name = "type",required = false) Integer type
                          ){
 
-        if (area.equals("无")){
-            area = "";
+        if (profession.equals("null")){
+            map.put("msg","专业为必选项");
+            List<Profession> professionList = professionExtMapper.selectProfession();
+            model.addAttribute("professionList", professionList);
+            return "highSearch";
         }
-        List<GaoKao> schoolSearchList = highSearchService.schoolHighSearch(area,profession,type);
-        List<Profession> professionList = professionExtMapper.selectProfession();
-        model.addAttribute("professionList",professionList);
-        model.addAttribute("schoolList",schoolSearchList);
-        model.addAttribute("area",area);
-        model.addAttribute("profession",profession);
-        model.addAttribute("type",type);
-        return "highSearch";
+        else{
+            List<GaoKao> schoolSearchList = highSearchService.schoolHighSearch(area, profession, type);
+            List<Profession> professionList = professionExtMapper.selectProfession();
+            model.addAttribute("professionList", professionList);
+            model.addAttribute("schoolList", schoolSearchList);
+            model.addAttribute("area", area);
+            model.addAttribute("profession", profession);
+            model.addAttribute("type", type);
+            return "highSearch";
+        }
     }
 }

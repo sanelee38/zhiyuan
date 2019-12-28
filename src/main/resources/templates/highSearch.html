@@ -157,6 +157,9 @@
                 <button type="submit" class="btn btn-primary" >搜索开设该专业的高校</button>
             </form>
         </div>
+        <div style="text-align:center;vertical-align:middle;width: 100%">
+            <h4 th:text="${msg}" style="color: red"></h4>
+        </div>
         <div class="schoolList">
             <div class="container-fluid">
                 <ul class="list-group" id="dataSet" th:each="school:${schoolList}">

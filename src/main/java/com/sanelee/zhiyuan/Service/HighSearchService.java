@@ -23,6 +23,9 @@ public class HighSearchService {
         Profession professions = professionExtMapper.selectByProname(profession);
         String subject = professions.getSubject();
         String major = professions.getMajor();
+        if (area.equals("无")){
+            area = "";
+        }
         if(StringUtils.isNotBlank(area)){
             String[] tags = StringUtils.split(area,",");
             area = Arrays.stream(tags).collect(Collectors.joining("|"));
