@@ -18,18 +18,18 @@ public interface GaoKaoExtMapper {
 
 
 
-    List<GaoKao> selectChongSchoolProfession(int score, String sort, String school, String area);
+    List<GaoKao> selectChongSchoolProfession(int score, Integer sort, String school, String area);
 
-    List<GaoKao> selectWenSchoolProfession(int score, String sort, String school, String area);
+    List<GaoKao> selectWenSchoolProfession(int score, Integer sort, String school, String area);
 
-    List<GaoKao> selectBaoSchoolProfession(int score, String sort, String school, String area);
+    List<GaoKao> selectBaoSchoolProfession(int score, Integer sort, String school, String area);
 
-    List<GaoKao> selectChongBySelect(int score, String area, String sort, String province1, String province2, String province3, String type1, String type2, String type3, String type4, String type5, String type6);
+    List<GaoKao> selectChongBySelect(int score, String area, Integer sort, String province1, String province2, String province3, String type1, String type2, String type3, String type4, String type5, String type6);
 
-    List<GaoKao> selectWenBySelect(int score, String area, String sort, String province1, String province2, String province3, String type1, String type2, String type3, String type4, String type5, String type6);
+    List<GaoKao> selectWenBySelect(int score, String area, Integer sort, String province1, String province2, String province3, String type1, String type2, String type3, String type4, String type5, String type6);
 
-    List<GaoKao> selectBaoBySelect(int score, String area, String sort, String province1, String province2, String province3, String type1, String type2, String type3, String type4, String type5, String type6);
+    List<GaoKao> selectBaoBySelect(int score, String area, Integer sort, String province1, String province2, String province3, String type1, String type2, String type3, String type4, String type5, String type6);
 
-    List<GaoKao> schoolHighSearch(String area, String profession, Integer is211, Integer is985, Integer isDoubleFirstClass, String subject, String major);
+    List<GaoKao> schoolHighSearch(String area, String profession, Integer is211, Integer is985, Integer isDoubleFirstClass, String subject, String major, String localBatchName);
 
 }

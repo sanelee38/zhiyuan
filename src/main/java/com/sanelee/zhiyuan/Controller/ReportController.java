@@ -67,11 +67,19 @@ public class ReportController {
 
         User user=userExtMapper.selectUserInfoByUsername(username);
 
+        Integer sort = null;
+        switch (user.getUsersort()){
+            case "理科":
+                sort=1;
+                break;
+            case "文科":
+                sort=2;
+                break;
+        }
         String name=user.getUserrealname();
         String gender = user.getUsergender();
         String phone = user.getUserphone();
         String wechat = user.getUserwechat();
-        String sort = user.getUsersort();
         String area = user.getUserarea();
         int score = user.getUserscore();
         int rank = user.getUserrank();

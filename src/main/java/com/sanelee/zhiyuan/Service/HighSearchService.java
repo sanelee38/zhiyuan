@@ -33,6 +33,7 @@ public class HighSearchService {
         Integer is211=null;
         Integer is985=null;
         Integer isDoubleFirstClass=null;
+        String localBatchName = null;
         switch (type){
             case 985:
                 is985=985;
@@ -52,6 +53,13 @@ public class HighSearchService {
                 is211=null;
                 is985=null;
                 isDoubleFirstClass=null;
+                break;
+            case 2:
+                localBatchName="本科一批";
+                break;
+            case 3:
+                localBatchName="本科二批";
+                break;
         }
 //        if (type==985){
 //            is985=985;
@@ -68,7 +76,7 @@ public class HighSearchService {
 //            is985=null;
 //            isDoubleFirstClass=null;
 //        }
-        List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area, profession, is211, is985, isDoubleFirstClass, subject, major);
+        List<GaoKao> schoolSearchList = gaoKaoExtMapper.schoolHighSearch(area, profession, is211, is985, isDoubleFirstClass, subject, major,localBatchName);
 
         return schoolSearchList;
     }

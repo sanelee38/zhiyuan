@@ -7,6 +7,7 @@ public class GaoKaoDTO {
     private Integer score;
     private String province;
     private String object;
+    private Integer sort;
     private String direction;
     private Integer is985;
     private Integer is211;

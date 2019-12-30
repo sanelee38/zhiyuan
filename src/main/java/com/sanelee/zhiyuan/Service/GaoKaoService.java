@@ -61,9 +61,18 @@ public class GaoKaoService {
     }
 
     public List<GaoKao> gaokaoQuery(Integer score, String province, String object) {
+        Integer sort = null;
+        switch (object){
+            case "理科":
+                sort=1;
+                break;
+            case "文科":
+                sort=2;
+                break;
+        }
         GaoKaoDTO gaoKaoDTO = new GaoKaoDTO();
         gaoKaoDTO.setProvince(province);
-        gaoKaoDTO.setObject(object);
+        gaoKaoDTO.setSort(sort);
         gaoKaoDTO.setScore(score);
         List<GaoKao> gaokaoList = gaoKaoExtMapper.searchByScore_Province_Object_Direction(gaoKaoDTO);
 
