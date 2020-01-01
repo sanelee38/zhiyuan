@@ -26,8 +26,8 @@ public class UserController {
     @RequestMapping("/userBasicInformation")
     public String userBasicInformation(HttpServletRequest request){
         User user = (User)request.getSession().getAttribute("loginUser");
-        User userIdentify = userExtMapper.findByUserNameAndUserPhone(user.getUserrealname(),user.getUserphone());
-        if (userIdentify==null){
+        User userIdentify = userExtMapper.findByUserNameAndUserPhone(user.getUsername(),user.getUserphone());
+        if (userIdentify.getUserrealname()==null){
             return "userBasicInformation";
         }
         else {
@@ -38,17 +38,15 @@ public class UserController {
 
     @RequestMapping(value="/adduserBasicInformation",method= RequestMethod.POST)
     public String userBasicInformation(Map<String,Object> map,
+                                       HttpServletRequest request,
                                        @RequestParam(name="userRealname",required = false) String userRealname,
                                        @RequestParam(name="userGender",required = false) String userGender,
-                                       @RequestParam(name="userPhone",required = false) String userPhone,
                                        @RequestParam(name="userWechat",required = false) String userWechat,
                                        @RequestParam(name="userScore",required = false) Integer userScore,
-                                       @RequestParam(name="userRank",required = false) Integer userRank,
-                                       @RequestParam(name="userArea",required = false) String userArea,
-                                       @RequestParam(name="userSort",required = false) String userSort){
-
-        User userIdentify = userExtMapper.findByUserNameAndUserPhone(userRealname,userPhone);
-        if (userIdentify==null&&userRealname!=("")&&userPhone!=("")&&userWechat!=("")&&userScore!=null&&userRank!=null){
+                                       @RequestParam(name="userRank",required = false) Integer userRank){
+        User loginuser = (User)request.getSession().getAttribute("loginUser");
+        String userPhone=loginuser.getUserphone();
+        if (userRealname!=("")&&userWechat!=("")&&userScore!=null&&userRank!=null){
             User user= new User();
             user.setUserrealname(userRealname);
             user.setUsergender(userGender);
@@ -56,15 +54,9 @@ public class UserController {
             user.setUserwechat(userWechat);
             user.setUserscore(userScore);
             user.setUserrank(userRank);
-            user.setUserarea(userArea);
-            user.setUsersort(userSort);
 
             userExtMapper.saveUser(user);
-            return "reportZhiyuan";
-        }
-        else if (userIdentify!=null){
-
-            return "reportZhiyuan";
+            return "redirect:/reportZhiyuan";
         }
         else if(userRealname.equals("")){
             map.put("msg","姓名不能为空！");
