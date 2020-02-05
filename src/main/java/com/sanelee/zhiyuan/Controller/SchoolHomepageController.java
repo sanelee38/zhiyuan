@@ -41,7 +41,7 @@ public class SchoolHomepageController {
 
         GaoKaoExample example = new GaoKaoExample();
 
-        example.createCriteria().andScidEqualTo(scid).andLocalProvinceNameEqualTo(province).andLocalTypeNameEqualTo(sort);
+        example.createCriteria().andScidEqualTo(scid).andLocalProvinceNameEqualTo(province).andLocalTypeNameEqualTo(sort).andYearEqualTo(2018);
         List<GaoKao> gaoKao = gaoKaoMapper.selectByExample(example);
         model.addAttribute("schools",school);
         model.addAttribute("schoolscores",schoolScore);

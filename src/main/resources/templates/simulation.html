@@ -52,7 +52,7 @@
                 <li><a href="/">首页</a>
                 </li>
                 <li><a>填志愿</a>
-                    <ul id="one" style="position:absolute; top:96%; left: 26.4%; ">
+                    <ul id="one" >
                         <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
                         <li><a href="/school">找大学</a></li>
                         <li><a href="/profession">查专业</a></li>
@@ -63,7 +63,7 @@
                     </ul>
                 </li>
                 <li><a href="#">视频课堂</a>
-                    <ul id="two" style="position:absolute; top:96%; left: 35.87%; ">
+                    <ul id="two" >
                         <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
                         <li><a href="#">高校课堂</a></li>
                         <li><a href="#">专业课堂</a></li>
@@ -72,16 +72,16 @@
                 </li>
                 <li><a href="/highSearch">高级搜索</a>
                 </li>
-                <li th:if="${session.loginUser != null}" style="margin-left: 22.7%">
+                <li th:if="${session.loginUser != null}" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
                         <span  th:text="${session.loginUser.username}+'&nbsp;'+'同学'"></span>
                     </a>
-                    <ul id="three" style="position:absolute; top:96%; left: 73.59%; ">
+                    <ul id="three" >
                         <li><a href="/front/logout">退出登录</a></li>
                     </ul>
                 </li>
-                <li th:if="${session.loginUser == null}" style="margin-left: 22.7%">
+                <li th:if="${session.loginUser == null}" >
                     <a href="/front/login">登录</a>
                 </li>
             </ul>

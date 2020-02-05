@@ -31,6 +31,9 @@
   <select id="findByUserNameAndUserPhone" parameterType="com.sanelee.zhiyuan.Model.User" resultMap="BaseResultMap">
     select * from user where userName = #{username} and userphone=#{userPhone}
   </select>
+  <select id="selectByPhone" parameterType="com.sanelee.zhiyuan.Model.User" resultMap="BaseResultMap">
+    select * from user where userphone=#{userPhone}
+  </select>
   <select id="getScoreByPhone" parameterType="com.sanelee.zhiyuan.Model.User" resultMap="BaseResultMap">
     select userscore from user where userphone=#{userPhone}
   </select>
