@@ -18,6 +18,10 @@ spring:
 
 server:
   port: 9090
+  servlet:
+    session:
+      cookie:
+        max-age: 604800
 mybatis:
   type-aliases-package: com.sanelee.zhiyuan.Model
   configuration:
