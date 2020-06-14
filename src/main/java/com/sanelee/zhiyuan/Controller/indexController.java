@@ -12,14 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -38,7 +35,7 @@ public class indexController {
         private String phone;
         private String code;
     }
-    
+
     @GetMapping("/")
     public String index(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
@@ -49,7 +46,6 @@ public class indexController {
                 if (user != null){
                     request.getSession().setAttribute("user",user);
                 }
-                break;
             }
         }
         return "index";
@@ -81,7 +77,7 @@ public class indexController {
 
     //注册方法
     @RequestMapping("/addregister")
-    public String register(HttpServletRequest request, Map<String,Object> map){
+    public String register(HttpServletRequest request, Map<String,Object> map,Model model){
         String username = request.getParameter("username");
         String userPhone = request.getParameter("userPhone");
         String userArea = request.getParameter("userArea");
@@ -155,8 +151,11 @@ public class indexController {
             userMapper.updateByExampleSelective(updateUser, example);
             response.addCookie(new Cookie("token",token));
             session.setAttribute("loginUser",user);
+            session.setAttribute(user.getUsername(),token);
             map.put("msg","登陆成功");
             model.addAttribute("user",username);
+            System.out.println(session.getId());
+            System.out.println(token);
             return "redirect:/";
         }else {
             map.put("msg","密码或账号错误！");

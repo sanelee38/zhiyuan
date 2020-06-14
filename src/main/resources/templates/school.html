@@ -120,10 +120,10 @@
             <div class="schoolList" >
                 <div class="container-fluid">
                     <ul class="list-group" id="dataSet" th:each="school:${pagination.schools}">
-                        <li class="media" style="height: 80px">
+                        <mediali class="media" style="height: 80px">
                             <a th:href="@{'/schoolHomepage/'+${school.scid}}" style="text-decoration: none;">
                                 <div class="media-body" >
-                                    <h4 class="media-heading" style="color: #333333" th:text="${school.name}"></h4>
+                                    <h4 class="-heading" style="color: #333333" th:text="${school.name}"></h4>
                                 </div>
                             </a>
                             <ol class="schooltitle">
@@ -136,7 +136,7 @@
                                 <span class="label label-primary" th:if="${school.is211 == 211}">211</span>
                                 <span class="label label-primary" th:if="${school.isdoublefirstclass == 1}">双一流</span>
                             </ol>
-                        </li>
+                        </mediali>
                     </ul>
                     <div style="text-align: center">
                         <nav aria-label="Page navigation" style="color: #0f0f0f">

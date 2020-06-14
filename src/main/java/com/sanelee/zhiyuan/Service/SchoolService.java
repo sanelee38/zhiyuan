@@ -61,8 +61,8 @@ public class SchoolService {
         }
         paginationDTO.setPagination(totalPage, page);
         Integer offset = size * (page -1);
-        SchoolExample example = new SchoolExample();
-        example.setOrderByClause("rank asc");
+//        SchoolExample example = new SchoolExample();
+//        example.setOrderByClause("rank asc");
         schoolQueryDTO.setSize(size);
         schoolQueryDTO.setPage(offset);
         List<School> schoolList = schoolExtMapper.selectBySomething(schoolQueryDTO);
