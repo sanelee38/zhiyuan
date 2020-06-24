@@ -68,7 +68,7 @@ public class ExportWordUtils {
     }
 
     /**
-     * 删除零时生成的文件
+     * 删除临时生成的文件
      */
     public static void delFileWord(String filePath, String fileName) {
         File file = new File(filePath + fileName);
