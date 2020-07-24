@@ -18,6 +18,22 @@
             document.demo.submit();
         }
     </script>
+    <style type="text/css">
+        .aspect-ratio {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 45%;
+        }
+
+        .aspect-ratio iframe {
+            position: absolute;
+            width: 65%;
+            height: 90%;
+            left: 18%;
+            top: 0;
+        }
+    </style>
 </head>
 <body style="background-color: #f5f4f8">
     <div style="height: 100px;background-color: white">
@@ -178,6 +194,13 @@
             <div class="myitem col-lg-5 col-md-5 col-sm-5 col-xs-5  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" style="height: 500px;-webkit-border-radius: 10px;">
                 <div class="page-header">
                     <h2 style="margin-top: -40px">视频课堂 </h2>
+                </div>
+                <div>
+                    <div class="aspect-ratio" >
+                        <iframe src="//player.bilibili.com/player.html?aid=456314566&bvid=BV195411Y7M8&cid=210433362&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>                    </div>
+                    <div style="position: relative;left: 50%;">
+                        <a href="https://www.bilibili.com/video/BV195411Y7M8?p=1" th:text="更多2020高考报考热门问题讲解+'&gt;'+'&gt;'+'&gt;'"></a>
+                    </div>
                 </div>
             </div>
 
